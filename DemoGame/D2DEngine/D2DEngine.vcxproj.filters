@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="source">
+      <UniqueIdentifier>{b3a59840-4765-4eb9-adb9-485685f11cbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\core">
+      <UniqueIdentifier>{051eddf6-7d76-40ca-a69a-c63d6037297e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\helper">
+      <UniqueIdentifier>{aa1ccaa1-34f6-4ef8-8c4f-37e16d1a771a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\framework">
+      <UniqueIdentifier>{b762ad49-4390-495d-86da-e89a0868fc5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\core\component">
+      <UniqueIdentifier>{ea043205-a495-4085-a0dd-0c43e1ac6fe5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\core\object">
+      <UniqueIdentifier>{0e46f9c3-0666-4c99-860c-9dd8ea275708}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\core\scene">
+      <UniqueIdentifier>{5fd502d7-d25b-4136-8555-e311a0259ace}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Component.h">
+      <Filter>source\core\component</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>source\core\object</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldManager.h">
+      <Filter>source\framework</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManager.h">
+      <Filter>source\framework</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeSystem.h">
+      <Filter>source\framework</Filter>
+    </ClInclude>
+    <ClInclude Include="WinApp.h">
+      <Filter>source\framework</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="InputSystem.h">
+      <Filter>source\framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Helper.h">
+      <Filter>source\helper</Filter>
+    </ClInclude>
+    <ClInclude Include="D2DRenderer.h">
+      <Filter>source\framework</Filter>
+    </ClInclude>
+    <ClInclude Include="framework.h">
+      <Filter>source\framework</Filter>
+    </ClInclude>
+    <ClInclude Include="World.h">
+      <Filter>source\core\scene</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Helper.cpp">
+      <Filter>source\helper</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManager.cpp">
+      <Filter>source\framework</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldManager.cpp">
+      <Filter>source\framework</Filter>
+    </ClCompile>
+    <ClCompile Include="D2DRenderer.cpp">
+      <Filter>source\framework</Filter>
+    </ClCompile>
+    <ClCompile Include="InputSystem.cpp">
+      <Filter>source\framework</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeSystem.cpp">
+      <Filter>source\framework</Filter>
+    </ClCompile>
+    <ClCompile Include="WinApp.cpp">
+      <Filter>source\framework</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>source\core\component</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>source\core\object</Filter>
+    </ClCompile>
+    <ClCompile Include="World.cpp">
+      <Filter>source\core\scene</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

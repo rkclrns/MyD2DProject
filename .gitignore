@@ -1,0 +1,5 @@
+*.ipch
+*.vsidx
+DemoGame/.vs/DemoGame/v17/.suo
+*.db
+*.json
