@@ -3,3 +3,15 @@
 DemoGame/.vs/DemoGame/v17/.suo
 *.db
 *.json
+*.tlog
+*.obj
+*.log
+*.db-shm
+*.db-wal
+*.opendb
+*.recipe
+*.ilk
+*.idb
+*.pdb
+*.lib
+*.exe
