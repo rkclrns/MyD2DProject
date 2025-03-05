@@ -14,9 +14,9 @@ public:
 	void					Initialize(HWND hWnd);
 	void					Uninitialize();
 
-	void					DrawRect(const D2D1_MATRIX_3X2_F& matrix, const D2D1_RECT_F& rectPoint, const D2D1_COLOR_F& color, bool rectFill, float alpha);
-	//void					DrawLine();
-	void					DrawTextW(const wchar_t* text, IDWriteTextFormat*& fontFormat, const D2D1_RECT_F& drawRect, const D2D1_COLOR_F& color);
+	void					DrawRect(const D2D1_RECT_F& rectPoint, const D2D1_COLOR_F& color, bool rectFill, float alpha = 1.f);
+	void					DrawTextW(const wchar_t* text, IDWriteTextFormat*& fontFormat, const D2D1_RECT_F& drawRect, const D2D1_COLOR_F& color, float alpha = 1.f);
+	void					DrawLine(const D2D1_POINT_2F startPoint, const D2D1_POINT_2F endPoint, const D2D1_COLOR_F& color, float alpha = 1.f);
 
 	ID2D1Factory*			GetFactory() { return m_pD2DFactory; }
 	ID2D1HwndRenderTarget*	GetRenderTarget() { return m_pRenderTarget; }

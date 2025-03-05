@@ -112,19 +112,41 @@ void D2DRenderer::Uninitialize()
 	SAFE_RELEASE(m_pDWriteTextFormat);
 	SAFE_RELEASE(m_pDXGIFactory);
 	SAFE_RELEASE(m_pDXGIAdapter);
+
 	CoUninitialize();
 }
 
-void D2DRenderer::DrawRect(const D2D1_MATRIX_3X2_F& matrix, const D2D1_RECT_F& rectPoint, const D2D1_COLOR_F& color, bool rectFill, float alpha)
+void D2DRenderer::DrawRect(const D2D1_RECT_F& rectPoint, const D2D1_COLOR_F& color, bool rectFill, float alpha)
 {
+	m_pBrush->SetColor(color);
+	m_pBrush->SetOpacity(alpha);
+
+	if (rectFill)
+	{
+		m_pRenderTarget->DrawRectangle(&rectPoint, m_pBrush);
+	}
+	else
+	{
+		m_pRenderTarget->FillRectangle(&rectPoint, m_pBrush);
+	}
 }
 
-void D2DRenderer::DrawLine()
+void D2DRenderer::DrawTextW(const wchar_t* text, IDWriteTextFormat*& fontFormat, const D2D1_RECT_F& drawRect, const D2D1_COLOR_F& color, float alpha = 1.f)
 {
+	m_pBrush->SetColor(color);
+	m_pBrush->SetOpacity(alpha);
+
+	size_t bufferSize = wcslen(text);
+
+	m_pRenderTarget->DrawText(text, bufferSize, fontFormat, drawRect, m_pBrush);
 }
 
-void D2DRenderer::DrawTextW(const wchar_t* text, IDWriteTextFormat*& fontFormat, const D2D1_RECT_F& drawRect, const D2D1_COLOR_F& color)
+void D2DRenderer::DrawLine(const D2D1_POINT_2F startPoint, const D2D1_POINT_2F endPoint, const D2D1_COLOR_F& color, float alpha)
 {
+	m_pBrush->SetColor(color);
+	m_pBrush->SetOpacity(alpha);
+
+	m_pRenderTarget->DrawLine(startPoint, endPoint, m_pBrush);
 }
 
 void D2DRenderer::PrintMatrix(const wchar_t* str, D2D_MATRIX_3X2_F& mat, float left, float top)

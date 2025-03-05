@@ -1,5 +1,5 @@
 #pragma once
-#include "GameObject.h"
+#include "World.h"
 
 // 게임의 세계를 나타내는 클래스
 // GameObect를 만든다.
@@ -11,14 +11,17 @@ public:
 	WorldManager();
 	virtual ~WorldManager();
 
-	std::list<GameObject*> m_GameObjects;
+	std::list<World*> m_WorldList;
 
-	int count;
+	World* m_currWorld = nullptr;
+
 public:
+	void ChangeWorld(std::string worldName);
+
 	void Update(float deltaTime);
 	void Render(ID2D1RenderTarget* pRenderTarget);
 	void Clear();
-	//void SetCullingBound(AABB* pBound) { m_pCullingBound = pBound; }
+	
 	// 템플릿 함수로 GameObject를 생성한다.
 	template<typename T>
 	T* CreateGameObject()
