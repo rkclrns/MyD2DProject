@@ -18,7 +18,7 @@ public:
 	virtual void Run();
 	virtual void UnInitialize();
 	virtual void Update();
-	virtual void Render(ID2D1RenderTarget* pRenderTarget);
+	virtual void Render();
 
 private:
 	HINSTANCE m_hInstance;

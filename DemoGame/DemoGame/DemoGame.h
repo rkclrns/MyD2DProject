@@ -15,9 +15,8 @@ public:
 	
 	void Update() override;
 
-	void Render(ID2D1RenderTarget* pRenderTarget) override;
+	void Render() override;
 
 private:
 
 };
-

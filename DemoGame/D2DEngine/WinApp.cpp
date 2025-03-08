@@ -51,7 +51,7 @@ void WinApp::Run()
 		else
 		{
 			Update();						// 게임 로직 업데이트
-			Render(d2d->GetRenderTarget());	// 게임 화면 렌더링
+			Render();	// 게임 화면 렌더링
 		}
 	}
 }
@@ -64,7 +64,7 @@ void WinApp::UnInitialize()
 	CoUninitialize();
 }
 
-void WinApp::Render(ID2D1RenderTarget* pRenderTarget)
+void WinApp::Render()
 {
 	
 }

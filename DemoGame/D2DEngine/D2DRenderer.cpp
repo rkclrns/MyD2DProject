@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "D2DRenderer.h"
+
 #pragma comment(lib, "d2d1.lib")
 #pragma comment(lib,"dwrite.lib")
 #pragma comment(lib,"dxgi.lib")
@@ -116,6 +117,22 @@ void D2DRenderer::Uninitialize()
 	CoUninitialize();
 }
 
+void D2DRenderer::BeginDraw()
+{
+	m_pRenderTarget->BeginDraw();
+}
+
+void D2DRenderer::EndDraw()
+{
+	m_pRenderTarget->EndDraw();
+}
+
+void D2DRenderer::DrawBitmap(ID2D1Bitmap* const ID2D1Bitmap, const D2D1_MATRIX_3X2_F& matrix)
+{
+	m_pRenderTarget->SetTransform(matrix);
+	m_pRenderTarget->DrawBitmap(ID2D1Bitmap);
+}
+
 void D2DRenderer::DrawRect(const D2D1_RECT_F& rectPoint, const D2D1_COLOR_F& color, bool rectFill, float alpha)
 {
 	m_pBrush->SetColor(color);
@@ -131,7 +148,32 @@ void D2DRenderer::DrawRect(const D2D1_RECT_F& rectPoint, const D2D1_COLOR_F& col
 	}
 }
 
-void D2DRenderer::DrawTextW(const wchar_t* text, IDWriteTextFormat*& fontFormat, const D2D1_RECT_F& drawRect, const D2D1_COLOR_F& color, float alpha = 1.f)
+void D2DRenderer::DrawRect(const D2D1_VECTOR_2F& position, const D2D1_SIZE_F& rectSize, const D2D1_COLOR_F& color, bool rectFill, float alpha)
+{
+	// 중앙 기준으로 그리기
+	float halfWidth = rectSize.width * 0.5f;
+	float halfHeight = rectSize.height * 0.5f;
+
+	D2D1_RECT_F rectPoint{};
+	rectPoint.left = position.x - halfWidth;
+	rectPoint.top = position.y - halfHeight;
+	rectPoint.right = position.x + halfWidth;
+	rectPoint.bottom = position.y + halfHeight;
+
+	m_pBrush->SetColor(color);
+	m_pBrush->SetOpacity(alpha);
+
+	if (rectFill)
+	{
+		m_pRenderTarget->DrawRectangle(rectPoint, m_pBrush);
+	}
+	else
+	{
+		m_pRenderTarget->FillRectangle(rectPoint, m_pBrush);
+	}
+}
+
+void D2DRenderer::DrawTextW(const wchar_t* text, IDWriteTextFormat*& fontFormat, const D2D1_RECT_F& drawRect, const D2D1_COLOR_F& color, float alpha)
 {
 	m_pBrush->SetColor(color);
 	m_pBrush->SetOpacity(alpha);
@@ -141,12 +183,12 @@ void D2DRenderer::DrawTextW(const wchar_t* text, IDWriteTextFormat*& fontFormat,
 	m_pRenderTarget->DrawText(text, bufferSize, fontFormat, drawRect, m_pBrush);
 }
 
-void D2DRenderer::DrawLine(const D2D1_POINT_2F startPoint, const D2D1_POINT_2F endPoint, const D2D1_COLOR_F& color, float alpha)
+void D2DRenderer::DrawLine(const D2D1_POINT_2F startPoint, const D2D1_POINT_2F endPoint, const D2D1_COLOR_F& color, float alpha, float lineWidth)
 {
 	m_pBrush->SetColor(color);
 	m_pBrush->SetOpacity(alpha);
 
-	m_pRenderTarget->DrawLine(startPoint, endPoint, m_pBrush);
+	m_pRenderTarget->DrawLine(startPoint, endPoint, m_pBrush, lineWidth);
 }
 
 void D2DRenderer::PrintMatrix(const wchar_t* str, D2D_MATRIX_3X2_F& mat, float left, float top)
@@ -165,6 +207,11 @@ void D2DRenderer::PrintMatrix(const wchar_t* str, D2D_MATRIX_3X2_F& mat, float l
 	m_pBrush->SetColor(D2D1::ColorF(D2D1::ColorF::HotPink));
 	m_pRenderTarget->DrawTextW(str, (UINT32)wcslen(str), m_pDWriteTextFormat, D2D1::RectF(left, top, left + 300, top + 300), m_pBrush);
 	m_pRenderTarget->DrawTextW(buffer, (UINT32)wcslen(buffer), m_pDWriteTextFormat, D2D1::RectF(left, top + 60, left + 300, top + 60 + 300), m_pBrush);
+}
+
+void D2DRenderer::Clear(const D2D1_COLOR_F& color)
+{
+	m_pRenderTarget->Clear(color);
 }
 
 size_t D2DRenderer::GetUsedVRAM()
@@ -231,4 +278,29 @@ HRESULT D2DRenderer::CreateD2DBitmapFromFile(const WCHAR* szFilePath, ID2D1Bitma
 		pFrame->Release();
 
 	return hr;
+}
+
+IDWriteTextFormat* D2DRenderer::CreateD2DFont(const wchar_t* fontName, float fontSize, DWRITE_FONT_WEIGHT fontWeight, DWRITE_FONT_STYLE fontStyle, DWRITE_FONT_STRETCH fontStretch)
+{
+	IDWriteTextFormat* pDWriteTextFormat = nullptr;
+
+	// DirectWrite 텍스트 형식 개체를 만듭니다.
+	HRESULT hr = m_pDWriteFactory->CreateTextFormat(
+		fontName, // FontName    제어판-모든제어판-항목-글꼴-클릭 으로 글꼴이름 확인가능
+		NULL,
+		fontWeight,
+		fontStyle,
+		fontStretch,
+		fontSize,   // Font Size
+		L"", //locale
+		&pDWriteTextFormat
+	);
+	if (FAILED(hr))
+	{
+		_com_error err(hr);
+		::MessageBox(GetActiveWindow(), err.ErrorMessage(), L"Error CreateD2DFont", MB_OK);
+		return nullptr;
+	}
+
+	return pDWriteTextFormat;
 }
