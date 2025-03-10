@@ -21,3 +21,4 @@
 #include <dxgi1_4.h>
 #include <cmath>
 #include <list>
+#include <DirectXMath.h>

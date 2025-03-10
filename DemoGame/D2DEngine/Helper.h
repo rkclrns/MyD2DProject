@@ -66,8 +66,4 @@ namespace Helper
 	void GetLocationFromMatrix(const D2D_MATRIX_3X2_F& mat, float* x, float* y);
 	void SetRotationToMatrix(D2D_MATRIX_3X2_F& mat, float Rotation);
 	void SetScaleToMatrix(D2D_MATRIX_3X2_F& mat, float ScaleX, float ScaleY);
-
-	std::string WStringToString(const std::wstring& wstr);
-
-	std::wstring StringToWString(const std::string& str);
 } 

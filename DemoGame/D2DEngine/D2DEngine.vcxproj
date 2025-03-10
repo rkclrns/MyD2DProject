@@ -22,6 +22,8 @@
     <ClInclude Include="Component.h" />
     <ClInclude Include="Helper.h" />
     <ClInclude Include="InputSystem.h" />
+    <ClInclude Include="Transform.h" />
+    <ClInclude Include="Vector2.h" />
     <ClInclude Include="WinApp.h" />
     <ClInclude Include="D2DRenderer.h" />
     <ClInclude Include="framework.h" />
@@ -36,6 +38,8 @@
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Helper.cpp" />
     <ClCompile Include="InputSystem.cpp" />
+    <ClCompile Include="Transform.cpp" />
+    <ClCompile Include="Vector2.cpp" />
     <ClCompile Include="WinApp.cpp" />
     <ClCompile Include="D2DRenderer.cpp" />
     <ClCompile Include="GameObject.cpp" />

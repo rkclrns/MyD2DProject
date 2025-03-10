@@ -1,6 +1,6 @@
 #include "pch.h"
-#include "GameObject.h"
 #include "Component.h"
+#include "Transform.h"
 
 
 GameObject::GameObject()
@@ -13,17 +13,50 @@ GameObject::~GameObject()
 
 }
 
-void GameObject::Update(float deltaTime)
+void GameObject::PreUpdate()
 {
-
+	for (auto* e : m_components)
+	{
+		e->PreUpdate();
+	}
 }
 
-void GameObject::Render(ID2D1RenderTarget* pRenderTarget)
+void GameObject::Update()
 {
-
+	for (auto* e : m_components)
+	{
+		e->Update();
+	}
 }
 
-void GameObject::AddComponent(Component* pComponent)
+void GameObject::PostUpdate()
 {
+	for (auto* e : m_components)
+	{
+		e->PostUpdate();
+	}
+}
 
+void GameObject::PreRender()
+{
+	for (auto* e : m_components)
+	{
+		e->PreRender();
+	}
+}
+
+void GameObject::Render()
+{
+	for (auto* e : m_components)
+	{
+		e->Render();
+	}
+}
+
+void GameObject::PostRender()
+{
+	for (auto* e : m_components)
+	{
+		e->PostRender();
+	}
 }

@@ -60,6 +60,12 @@
     <ClInclude Include="World.h">
       <Filter>source\core\scene</Filter>
     </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>source\core\component</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2.h">
+      <Filter>source\helper</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Helper.cpp">
@@ -94,6 +100,12 @@
     </ClCompile>
     <ClCompile Include="World.cpp">
       <Filter>source\core\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>source\core\component</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2.cpp">
+      <Filter>source\helper</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
