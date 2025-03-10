@@ -1,8 +1,5 @@
 #pragma once
-
-class Component;
-class World;
-class Transform;
+#include "Transform.h"
 
 enum class eObjectState
 {

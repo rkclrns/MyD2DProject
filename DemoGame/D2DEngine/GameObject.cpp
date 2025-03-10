@@ -1,7 +1,5 @@
 #include "pch.h"
-#include "Component.h"
-#include "Transform.h"
-
+#include "GameObject.h"
 
 GameObject::GameObject()
 {

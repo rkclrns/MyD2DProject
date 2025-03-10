@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Animation.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Helper.h" />
     <ClInclude Include="InputSystem.h" />
@@ -35,6 +36,7 @@
     <ClInclude Include="WorldManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Helper.cpp" />
     <ClCompile Include="InputSystem.cpp" />
