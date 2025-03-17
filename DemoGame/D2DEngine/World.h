@@ -1,8 +1,6 @@
 #pragma once
 #include "GameObject.h"
 
-class GameObject;
-
 class World
 {
 private:
@@ -22,13 +20,17 @@ public:
 
 	// 템플릿 함수로 GameObject를 생성한다.
 	template<typename T>
-	T* CreateGameObject()
-	{
-		bool bIsBase = std::is_base_of<GameObject, T>::value;
-		assert(bIsBase == true);	// GameObject를 상속받은 클래스만 생성할 수 있다.
-		T* newObject = new T();
-		m_GameObjects.push_back(newObject);
-		return newObject;
-	}
+	T* CreateGameObject();
+
 };
+
+template<typename T>
+T* World::CreateGameObject()
+{
+	bool bIsBase = std::is_base_of<GameObject, T>::value;
+	assert(bIsBase == true);	// GameObject를 상속받은 클래스만 생성할 수 있다.
+	T* newObject = new T();
+	m_GameObjects.push_back(newObject);
+	return newObject;
+}
 

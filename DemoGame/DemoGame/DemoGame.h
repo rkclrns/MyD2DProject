@@ -18,5 +18,9 @@ public:
 	void Render() override;
 
 private:
+	ID2D1Bitmap* image = nullptr;
+	GameObject* test = nullptr;
+
+	float testf = 1;
 
 };
