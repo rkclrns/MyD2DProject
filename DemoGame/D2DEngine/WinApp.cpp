@@ -10,7 +10,6 @@ WinApp::WinApp()
 	// 생성
 	d2d = new D2DRenderer;
 	resource = new ResourceManager;
-	world = new WorldManager;
 }
 
 WinApp::~WinApp()
@@ -21,7 +20,6 @@ WinApp::~WinApp()
 // 스태틱 초기화
 D2DRenderer* WinApp::d2d = nullptr;
 ResourceManager* WinApp::resource = nullptr;
-WorldManager* WinApp::world = nullptr;
  
 void WinApp::Initialize(HINSTANCE hInstance)
 {
@@ -29,6 +27,10 @@ void WinApp::Initialize(HINSTANCE hInstance)
 
 	WindowInitialize();
 	d2d->Initialize(m_hWnd);
+
+	SceneManager::Initialize();
+	TimeSystem::Initialize();
+	InputSystem::Initialize();
 }
 
 void WinApp::Run()
@@ -66,12 +68,14 @@ void WinApp::UnInitialize()
 
 void WinApp::Render()
 {
-	
+	SceneManager::Render();
 }
 
 void WinApp::Update()
 {
-
+	SceneManager::Update();
+	TimeSystem::Update();
+	InputSystem::Update();
 }
 
 void WinApp::WindowInitialize()

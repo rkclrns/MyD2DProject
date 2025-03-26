@@ -4,7 +4,8 @@
 // 여기에 미리 컴파일하려는 헤더 추가
 #include "framework.h"
 #include "Helper.h"
-#include "TimeSystem.h"
 #include "InputSystem.h"
+#include "TimeSystem.h"
+
 
 #endif //PCH_H

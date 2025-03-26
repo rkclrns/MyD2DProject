@@ -2,20 +2,16 @@
 
 class TimeSystem
 {
-private:
-
-    static double prevTime;
-    static double currTime;
-    static double frameTime;
-    static double _precision;
-
 public:
 
-    static void UpdateTime();
+    static void Initialize();
+    static void Update();
 
-    static void InitTime();
+    static float GetDeltaTime();
 
-    static double GetTick();
-
-    static double GetDeltaTime();
+private:
+    static LARGE_INTEGER cpuFrequency;
+    static LARGE_INTEGER prevFrequency;
+    static LARGE_INTEGER currFrequency;
+    static float deltaTime;
 };

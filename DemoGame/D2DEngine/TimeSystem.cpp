@@ -1,35 +1,26 @@
 #include "pch.h"
 
-double TimeSystem::prevTime;
-double TimeSystem::currTime;
-double TimeSystem::frameTime;
-double TimeSystem::_precision;
+LARGE_INTEGER TimeSystem::cpuFrequency = {};
+LARGE_INTEGER TimeSystem::prevFrequency = {};
+LARGE_INTEGER TimeSystem::currFrequency = {};
+float TimeSystem::deltaTime = 0.0f;
 
-void TimeSystem::InitTime() {
-
-	LARGE_INTEGER freq;
-	if (!QueryPerformanceFrequency(&freq)) {
-		// TODO: Need a logger!
-		throw std::runtime_error("Timer: Performance counter is not supported!");
-	}
-	_precision = 1.0 / static_cast<double>(freq.QuadPart);
-
-	prevTime = GetTick();
-	currTime = 0.0;
-	frameTime = 0.0;
-}
-
-void TimeSystem::UpdateTime()
+void TimeSystem::Initialize() 
 {
-	currTime = GetTick();
-	frameTime = currTime - prevTime;
-	prevTime = currTime;
+	// CPU 고유 진동수
+	QueryPerformanceFrequency(&cpuFrequency);
+	
+	// 프로그램이 시작 했을 때 현재 진동수
+	QueryPerformanceCounter(&prevFrequency);
 }
 
-double TimeSystem::GetTick() {
-	LARGE_INTEGER counter;
-	QueryPerformanceCounter(&counter);
-	return static_cast<double>(counter.QuadPart) * _precision;
+void TimeSystem::Update()
+{
+	QueryPerformanceCounter(&currFrequency);
+
+	float differenceFrequency = static_cast<float>(currFrequency.QuadPart - prevFrequency.QuadPart);
+	deltaTime = differenceFrequency / static_cast<float>(cpuFrequency.QuadPart);
+	prevFrequency = currFrequency;
 }
 
-double TimeSystem::GetDeltaTime() { return frameTime; }
+float TimeSystem::GetDeltaTime() { return deltaTime; }

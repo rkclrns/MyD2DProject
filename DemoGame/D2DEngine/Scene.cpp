@@ -1,12 +1,23 @@
 #include "pch.h"
-#include "World.h"
+#include "Scene.h"
 
-void World::Initialize()
+Scene::Scene()
+	: m_GameObjects{}
 {
 
 }
 
-void World::PreUpdate()
+Scene::~Scene()
+{
+
+}
+
+void Scene::Initialize()
+{
+
+}
+
+void Scene::PreUpdate()
 {
 	for (auto* e : m_GameObjects)
 	{
@@ -17,7 +28,7 @@ void World::PreUpdate()
 	}
 }
 
-void World::Update()
+void Scene::Update()
 {
 	for (auto* e : m_GameObjects)
 	{
@@ -28,7 +39,7 @@ void World::Update()
 	}
 }
 
-void World::PostUpdate()
+void Scene::PostUpdate()
 {
 	for (auto* e : m_GameObjects)
 	{
@@ -39,7 +50,7 @@ void World::PostUpdate()
 	}
 }
 
-void World::PreRender()
+void Scene::PreRender()
 {
 	for (auto* e : m_GameObjects)
 	{
@@ -50,7 +61,7 @@ void World::PreRender()
 	}
 }
 
-void World::Render()
+void Scene::Render()
 {
 	for (auto* e : m_GameObjects)
 	{
@@ -61,7 +72,7 @@ void World::Render()
 	}
 }
 
-void World::PostRender()
+void Scene::PostRender()
 {
 	for (auto* e : m_GameObjects)
 	{

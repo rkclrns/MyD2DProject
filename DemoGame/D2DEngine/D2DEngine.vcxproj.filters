@@ -30,7 +30,7 @@
     <ClInclude Include="GameObject.h">
       <Filter>source\core\object</Filter>
     </ClInclude>
-    <ClInclude Include="WorldManager.h">
+    <ClInclude Include="SceneManager.h">
       <Filter>source\framework</Filter>
     </ClInclude>
     <ClInclude Include="ResourceManager.h">
@@ -57,7 +57,7 @@
     <ClInclude Include="framework.h">
       <Filter>source\framework</Filter>
     </ClInclude>
-    <ClInclude Include="World.h">
+    <ClInclude Include="Scene.h">
       <Filter>source\core\scene</Filter>
     </ClInclude>
     <ClInclude Include="Transform.h">
@@ -77,7 +77,7 @@
     <ClCompile Include="ResourceManager.cpp">
       <Filter>source\framework</Filter>
     </ClCompile>
-    <ClCompile Include="WorldManager.cpp">
+    <ClCompile Include="SceneManager.cpp">
       <Filter>source\framework</Filter>
     </ClCompile>
     <ClCompile Include="D2DRenderer.cpp">
@@ -101,7 +101,7 @@
     <ClCompile Include="GameObject.cpp">
       <Filter>source\core\object</Filter>
     </ClCompile>
-    <ClCompile Include="World.cpp">
+    <ClCompile Include="Scene.cpp">
       <Filter>source\core\scene</Filter>
     </ClCompile>
     <ClCompile Include="Transform.cpp">

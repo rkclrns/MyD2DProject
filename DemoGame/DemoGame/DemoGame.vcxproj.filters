@@ -16,12 +16,18 @@
     <ClInclude Include="Game.h">
       <Filter>client</Filter>
     </ClInclude>
+    <ClInclude Include="PlayScene.h">
+      <Filter>client</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
       <Filter>client</Filter>
     </ClCompile>
     <ClCompile Include="DemoGame.cpp">
+      <Filter>client</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayScene.cpp">
       <Filter>client</Filter>
     </ClCompile>
   </ItemGroup>

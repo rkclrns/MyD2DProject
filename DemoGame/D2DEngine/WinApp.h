@@ -2,7 +2,7 @@
 #include "pch.h"
 #include "D2DRenderer.h"
 #include "ResourceManager.h"
-#include "WorldManager.h"
+#include "SceneManager.h"
 
 class WinApp
 {
@@ -12,7 +12,6 @@ public:
 
 	static D2DRenderer* d2d;
 	static ResourceManager* resource;
-	static WorldManager* world;
 
 	virtual void Initialize(HINSTANCE hInstance);
 	virtual void Run();

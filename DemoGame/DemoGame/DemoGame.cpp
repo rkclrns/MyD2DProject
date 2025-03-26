@@ -25,7 +25,16 @@ void DemoGame::UnInitialize()
 void DemoGame::Update()
 {
 	__super::Update();
-	
+
+	if (InputSystem::GetKeyPressed(eKeyCode::S))
+		test->transform.position.y += moveSpeed * TimeSystem::GetDeltaTime();
+	else if (InputSystem::GetKeyPressed(eKeyCode::W))
+		test->transform.position.y -= moveSpeed * TimeSystem::GetDeltaTime();
+	else if (InputSystem::GetKeyPressed(eKeyCode::D))
+		test->transform.position.x += moveSpeed * TimeSystem::GetDeltaTime();
+	else if (InputSystem::GetKeyPressed(eKeyCode::A))
+		test->transform.position.x -= moveSpeed * TimeSystem::GetDeltaTime();
+
 	test->transform.SetRotation(testf);
 	testf++;
 }

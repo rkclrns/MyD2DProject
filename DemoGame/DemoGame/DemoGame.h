@@ -1,6 +1,5 @@
 #pragma once
 #include "../D2DEngine/WinApp.h"
-#include "../D2DEngine/TimeSystem.h"
 
 class DemoGame 
 	: public WinApp
@@ -22,5 +21,6 @@ private:
 	GameObject* test = nullptr;
 
 	float testf = 1;
+	float moveSpeed = 100.f;
 
 };

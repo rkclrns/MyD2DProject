@@ -1,11 +1,12 @@
 #pragma once
 #include "GameObject.h"
 
-class World
+class Scene
 {
-private:
-	std::string mWorldName;
 public:
+	Scene();
+	virtual ~Scene();
+
 	std::list<GameObject*> m_GameObjects;
 
 	virtual void Initialize();
@@ -16,16 +17,19 @@ public:
 	virtual void Render();
 	virtual void PostRender();
 
-	std::string GetWorldName() { return mWorldName; }
+	std::wstring GetSceneName() { return m_Name; }
+	void SetSceneName(const std::wstring name) { m_Name = name; }
 
 	// 템플릿 함수로 GameObject를 생성한다.
 	template<typename T>
 	T* CreateGameObject();
 
+private:
+	std::wstring m_Name;
 };
 
 template<typename T>
-T* World::CreateGameObject()
+T* Scene::CreateGameObject()
 {
 	bool bIsBase = std::is_base_of<GameObject, T>::value;
 	assert(bIsBase == true);	// GameObject를 상속받은 클래스만 생성할 수 있다.

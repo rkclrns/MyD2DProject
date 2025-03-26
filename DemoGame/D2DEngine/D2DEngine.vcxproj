@@ -32,8 +32,8 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="TimeSystem.h" />
-    <ClInclude Include="World.h" />
-    <ClInclude Include="WorldManager.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="SceneManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
@@ -48,8 +48,8 @@
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="TimeSystem.cpp" />
-    <ClCompile Include="World.cpp" />
-    <ClCompile Include="WorldManager.cpp" />
+    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
