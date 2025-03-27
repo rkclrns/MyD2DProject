@@ -1,6 +1,7 @@
 #pragma once
 #include "../D2DEngine/WinApp.h"
 
+class  PlayScene;
 class DemoGame 
 	: public WinApp
 {
@@ -16,7 +17,10 @@ public:
 
 	void Render() override;
 
+	void LoadScene();
+
 private:
+	PlayScene* playScene = nullptr;
 	ID2D1Bitmap* image = nullptr;
 	GameObject* test = nullptr;
 

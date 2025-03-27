@@ -1,8 +1,11 @@
 #include "DemoGame.h"
+#include "PlayScene.h"
 
 void DemoGame::Initialize(HINSTANCE hInstance)
 {
 	__super::Initialize(hInstance);
+
+	LoadScene();
 
 	test = new GameObject;
 	test->transform.SetPosition(Vector2(100, 100));
@@ -48,4 +51,9 @@ void DemoGame::Render()
 	d2d->DrawBitmap(image, test->transform.GetWorldMatrix());
 
 	d2d->EndDraw();
+}
+
+void DemoGame::LoadScene()
+{
+	playScene = SceneManager::CreateScene<PlayScene>(L"PlayScene");
 }

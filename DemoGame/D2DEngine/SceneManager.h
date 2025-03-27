@@ -9,11 +9,16 @@ public:
 	SceneManager();
 	virtual ~SceneManager();
 
-	static std::list<Scene*> m_SceneList;
+	static std::map<const std::wstring, Scene*> m_Scenes;
 	static Scene* m_activeScene;
 
 public:
 	static void ChangeWorld(std::wstring sceneName);
+	
+	template <typename T>
+	static T* CreateScene(const std::wstring& name);
+
+	static Scene* FindScene(const std::wstring& name);
 
 	static void Initialize();
 	static void PreUpdate();
@@ -24,3 +29,17 @@ public:
 	static void PostRender();
 	static void Clear();
 };
+
+template <typename T>
+T* SceneManager::CreateScene(const std::wstring& name)
+{
+	bool bIsBase = std::is_base_of<Scene, T>::value;
+	assert(bIsBase == true);	// Scene를 상속받은 클래스만 생성할 수 있다.
+	T* scene = new T();
+	scene->SetSceneName(name);
+	scene->Initialize();
+
+	m_Scenes.insert(std::make_pair(name, scene));
+
+	return scene;
+}
