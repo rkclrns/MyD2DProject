@@ -1,7 +1,5 @@
 #pragma once
 #include "pch.h"
-#include "D2DRenderer.h"
-#include "ResourceManager.h"
 #include "SceneManager.h"
 
 class WinApp

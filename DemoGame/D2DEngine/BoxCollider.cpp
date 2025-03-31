@@ -36,6 +36,10 @@ void BoxCollider::Render()
 {
 	Transform* tr = GetOwner()->transform;
 
+	D2D1_VECTOR_2F pos = { tr->position.x, tr->position.y };
+	D2D1_SIZE_F size = { 10.0f, 10.0f };
+
+	D2DRenderer::GetInstance()->DrawRect(pos, size, D2D1::ColorF(D2D1::ColorF::White), true);
 }
 
 void BoxCollider::PostRender()

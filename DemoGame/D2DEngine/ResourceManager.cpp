@@ -7,13 +7,15 @@
 
 ResourceManager::ResourceManager()
 {
-
+	pInstance = this;
 }
 
 ResourceManager::~ResourceManager()
 {
 
 }
+
+ResourceManager* ResourceManager::pInstance = nullptr;
 
 bool ResourceManager::CreateD2DBitmapFromFile(std::wstring strFilePath, ID2D1Bitmap** bitmap, D2DRenderer* d2d)
 {

@@ -8,8 +8,8 @@
 WinApp::WinApp()
 {
 	// 생성
-	d2d = new D2DRenderer;
-	resource = new ResourceManager;
+	//d2d = new D2DRenderer;
+	//resource = new ResourceManager;
 }
 
 WinApp::~WinApp()
@@ -18,15 +18,15 @@ WinApp::~WinApp()
 }
 
 // 스태틱 초기화
-D2DRenderer* WinApp::d2d = nullptr;
-ResourceManager* WinApp::resource = nullptr;
+//D2DRenderer* WinApp::d2d = nullptr;
+//ResourceManager* WinApp::resource = nullptr;
  
 void WinApp::Initialize(HINSTANCE hInstance)
 {
 	mHInstance = hInstance;
 
 	WindowInitialize();
-	d2d->Initialize(mHWnd);
+	D2DRenderer::GetInstance()->Initialize(mHWnd);
 
 	SceneManager::Initialize();
 	TimeSystem::Initialize();
@@ -61,7 +61,7 @@ void WinApp::Run()
 void WinApp::UnInitialize()
 {
 	// d2d 삭제
-	d2d->Uninitialize();
+	D2DRenderer::GetInstance()->Uninitialize();
 	// COM 사용 끝 (사용은 d2d에서 함)
 	CoUninitialize();
 }

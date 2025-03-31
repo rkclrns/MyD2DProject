@@ -5,11 +5,20 @@
 class D2DRenderer
 {
 public:
-
-	D2DRenderer();
-	~D2DRenderer();
-
 	static D2D1_MATRIX_3X2_F mCameraTransform;		// 카메라 월드 역행렬
+	
+	static D2DRenderer* GetInstance()
+	{
+		if (!pInstance)
+			pInstance = new D2DRenderer();
+
+		return pInstance;
+	}
+
+	static void DestroyInstance() {
+		delete pInstance;  // 해제
+		pInstance = nullptr;
+	}
 
 	void					Initialize(HWND hWnd);
 	void					Uninitialize();
@@ -35,6 +44,15 @@ public:
 	void					Clear(const D2D1_COLOR_F& color);
 
 private:
+
+	D2DRenderer();
+	~D2DRenderer();
+
+	// 복사 & 대입 연산자 삭제
+	D2DRenderer(const D2DRenderer&) = delete;
+	D2DRenderer& operator=(const D2DRenderer&) = delete;
+
+	static D2DRenderer* pInstance;
 
 	HWND					mHWnd;						// 렌더타겟을 생성할 윈도우 핸들
 	D2D_SIZE_U				mScreenSize;	            // 이건 안쓰는 변수?

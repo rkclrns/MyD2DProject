@@ -16,6 +16,7 @@ D2DRenderer::~D2DRenderer()
 
 }
 
+D2DRenderer* D2DRenderer::pInstance = nullptr;
 D2D1_MATRIX_3X2_F D2DRenderer::mCameraTransform = D2D1::Matrix3x2F::Identity();
 
 void D2DRenderer::Initialize(HWND hWnd)
