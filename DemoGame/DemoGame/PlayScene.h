@@ -13,6 +13,5 @@ public:
 	void Render() override;
 	void PostRender() override;
 private:
-
 };
 

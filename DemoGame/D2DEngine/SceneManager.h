@@ -19,6 +19,7 @@ public:
 	static T* CreateScene(const std::wstring& name);
 
 	static Scene* FindScene(const std::wstring& name);
+	static Scene* LoadScene(const std::wstring& name);
 
 	static void Initialize();
 	static void PreUpdate();

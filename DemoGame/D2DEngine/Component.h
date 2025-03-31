@@ -7,8 +7,6 @@ public:
 	Component();
 	virtual ~Component();
 
-	GameObject* m_pOwner;
-
 	GameObject* GetOwner() { return m_pOwner; }
 	void SetOwner(GameObject* pOwner) { m_pOwner = pOwner; }
 
@@ -18,5 +16,8 @@ public:
 	virtual void PreRender() = 0;
 	virtual void Render() = 0;
 	virtual void PostRender() = 0;
+
+private:
+	GameObject* m_pOwner;
 };
 

@@ -31,9 +31,9 @@ public:
 	template <typename T>
 	T* AddComponent();
 
-	std::vector<Component*> m_components;
 
 private:
+	std::vector<Component*> m_components;
 	eObjectState m_state = eObjectState::ACTIVE;
 };
 
@@ -65,7 +65,7 @@ T* GameObject::AddComponent()
 	T* newCompenent = new T();
 	newCompenent->SetOwner(this);
 
-	m_components.pop_back(newCompenent);
+	m_components.push_back(newCompenent);
 
 	return newCompenent;
 };

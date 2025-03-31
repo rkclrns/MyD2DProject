@@ -55,5 +55,7 @@ void DemoGame::Render()
 
 void DemoGame::LoadScene()
 {
-	playScene = SceneManager::CreateScene<PlayScene>(L"PlayScene");
+	SceneManager::CreateScene<PlayScene>(L"PlayScene");
+
+	playScene = dynamic_cast<PlayScene*>(SceneManager::LoadScene(L"PlayScene"));
 }

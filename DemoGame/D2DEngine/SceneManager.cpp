@@ -15,23 +15,36 @@ SceneManager::~SceneManager()
 std::map<const std::wstring, Scene*> SceneManager::m_Scenes = {};
 Scene* SceneManager::m_activeScene = nullptr;
 
-void SceneManager::ChangeWorld(std::wstring sceneName)
+void SceneManager::ChangeWorld(std::wstring name)
 {
-	for (auto& e : m_Scenes)
-	{
-		if (e.second->GetSceneName() == sceneName)
-		{
-			m_activeScene = e.second;
-		}
-	}
+	std::map<std::wstring, Scene*>::iterator itr = m_Scenes.find(name);
+
+	if (itr == m_Scenes.end())
+		return;
+
+	m_activeScene = itr->second;
+}
+
+Scene* SceneManager::LoadScene(const std::wstring& name)
+{
+	std::map<std::wstring, Scene*>::iterator itr = m_Scenes.find(name);
+
+	if (itr == m_Scenes.end())
+		return nullptr;
+
+	m_activeScene = itr->second;
+
+	return itr->second;
 }
 
 Scene* SceneManager::FindScene(const std::wstring& name)
 {
-	Scene* scene = m_Scenes.find(L"name")->second;
-	assert(scene != nullptr);
+	std::map<std::wstring, Scene*>::iterator itr = m_Scenes.find(name);
 
-	return scene;
+	if (itr == m_Scenes.end())
+		return nullptr;
+
+	return itr->second;
 }
 
 void SceneManager::Initialize()

@@ -10,6 +10,7 @@ void PlayScene::PreUpdate()
 
 void PlayScene::Update()
 {
+
 }
 
 void PlayScene::PostUpdate()

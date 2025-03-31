@@ -26,5 +26,4 @@ private:
 
 	float testf = 1;
 	float moveSpeed = 100.f;
-
 };
