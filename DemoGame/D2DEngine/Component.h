@@ -1,10 +1,21 @@
 #pragma once
 
 class GameObject;
+
+enum class eComponentType
+{
+	Transform,
+	Collider,
+	SpriteRenderer,
+	Animator,
+	Camera,
+	End,
+};
+
 class Component
 {
 public:
-	Component();
+	Component(eComponentType type);
 	virtual ~Component();
 
 	GameObject* GetOwner() { return m_pOwner; }
@@ -20,5 +31,6 @@ public:
 
 private:
 	GameObject* m_pOwner;
+	eComponentType mType;
 };
 

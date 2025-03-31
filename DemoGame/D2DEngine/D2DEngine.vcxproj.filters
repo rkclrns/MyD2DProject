@@ -22,6 +22,9 @@
     <Filter Include="source\core\scene">
       <UniqueIdentifier>{5fd502d7-d25b-4136-8555-e311a0259ace}</UniqueIdentifier>
     </Filter>
+    <Filter Include="source\core\component\Collider">
+      <UniqueIdentifier>{4bc91d28-0b5f-4907-a438-860649d32d46}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Component.h">
@@ -69,6 +72,15 @@
     <ClInclude Include="Animation.h">
       <Filter>source\core\component</Filter>
     </ClInclude>
+    <ClInclude Include="Collider.h">
+      <Filter>source\core\component\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="BoxCollider.h">
+      <Filter>source\core\component\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="CircleCollider.h">
+      <Filter>source\core\component\Collider</Filter>
+    </ClInclude>
     <ClInclude Include="Resource.h">
       <Filter>source\framework</Filter>
     </ClInclude>
@@ -112,6 +124,15 @@
     </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>source\core\component</Filter>
+    </ClCompile>
+    <ClCompile Include="Collider.cpp">
+      <Filter>source\core\component\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="BoxCollider.cpp">
+      <Filter>source\core\component\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="CircleCollider.cpp">
+      <Filter>source\core\component\Collider</Filter>
     </ClCompile>
     <ClCompile Include="D2DRenderer.cpp">
       <Filter>source\framework</Filter>

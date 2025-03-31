@@ -29,7 +29,7 @@ public:
 
 private:
 	std::wstring mPath;
-	const eResourceType mType;
+	eResourceType mType;
 	std::map<std::wstring, Resource*> mResources;
 };
 

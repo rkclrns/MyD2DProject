@@ -3,7 +3,7 @@
 
 GameObject::GameObject()
 {
-
+	transform = new Transform();
 }
 
 GameObject::~GameObject()

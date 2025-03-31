@@ -20,7 +20,7 @@ public:
 	virtual void Render();
 	virtual void PostRender();
 
-	Transform transform;
+	Transform* transform;
 
 	void SetState(eObjectState eState) { mState = eState; }
 	eObjectState GetState() { return mState; }

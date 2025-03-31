@@ -6,6 +6,6 @@
 #include "Helper.h"
 #include "InputSystem.h"
 #include "TimeSystem.h"
-
+#include "Vector2.h"
 
 #endif //PCH_H

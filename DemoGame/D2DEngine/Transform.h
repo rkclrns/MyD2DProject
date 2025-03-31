@@ -1,9 +1,7 @@
 #pragma once
 #include "Component.h"
-#include "Vector2.h"
 
 class Vector2;
-
 class Transform
 	: public Component
 {

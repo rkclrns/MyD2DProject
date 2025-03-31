@@ -2,6 +2,7 @@
 #include "Transform.h"
 
 Transform::Transform()
+    : Component(eComponentType::Transform)
 {
     UpdateWorldMatrix();
 }
