@@ -24,21 +24,31 @@ public:
 
 	void Update() override;
 	void Render() override;
+
+	void PlayAnimation(const std::wstring name, bool loop = true);
+
 	ID2D1Bitmap* GetCurrentImage();
 	ID2D1Bitmap* GetImage(const int index);
 	int GetCurrFrame();
 	int GetLastFrame();
+
+	void SetLoop(const bool IsLoop);
 	void SetFrame(const int frame);
 	void SetAnimation(const int index);
+
 	bool ChangeAnimation();
-	bool IsEnd();
 	bool LoadAnimation();
+	Animation* FindAnimation(const std::wstring name);
+
+	bool IsLoop();
+	bool IsEnd();
 	void AddFrame();
 
 private:
-	AnimationInfo m_animationInfo;
+	AnimationInfo mAnimationInfo;
 
-	float m_currFrame = 0.f;
-	int m_currIndex = 0;
+	float mCurrFrame = 0.f;
+	int mCurrIndex = 0;
 	bool b_isEnd = false;
+	bool b_isLoop = false;
 };

@@ -12,36 +12,28 @@ SceneManager::~SceneManager()
 
 }
 
-std::map<const std::wstring, Scene*> SceneManager::m_Scenes = {};
-Scene* SceneManager::m_activeScene = nullptr;
+std::map<const std::wstring, Scene*> SceneManager::mScenes = {};
+Scene* SceneManager::mActiveScene = nullptr;
 
 void SceneManager::ChangeWorld(std::wstring name)
 {
-	std::map<std::wstring, Scene*>::iterator itr = m_Scenes.find(name);
+	if (mActiveScene)
+		mActiveScene->OnExit();
 
-	if (itr == m_Scenes.end())
+	std::map<std::wstring, Scene*>::iterator itr = mScenes.find(name);
+
+	if (itr == mScenes.end())
 		return;
 
-	m_activeScene = itr->second;
-}
-
-Scene* SceneManager::LoadScene(const std::wstring& name)
-{
-	std::map<std::wstring, Scene*>::iterator itr = m_Scenes.find(name);
-
-	if (itr == m_Scenes.end())
-		return nullptr;
-
-	m_activeScene = itr->second;
-
-	return itr->second;
+	mActiveScene = itr->second;
+	mActiveScene->OnEnter();
 }
 
 Scene* SceneManager::FindScene(const std::wstring& name)
 {
-	std::map<std::wstring, Scene*>::iterator itr = m_Scenes.find(name);
+	std::map<std::wstring, Scene*>::iterator itr = mScenes.find(name);
 
-	if (itr == m_Scenes.end())
+	if (itr == mScenes.end())
 		return nullptr;
 
 	return itr->second;
@@ -53,50 +45,50 @@ void SceneManager::Initialize()
 
 void SceneManager::PreUpdate()
 {
-	if (!m_activeScene)
+	if (!mActiveScene)
 		return;
 
-	m_activeScene->PreUpdate();
+	mActiveScene->PreUpdate();
 }
 
 void SceneManager::Update()
 {
-	if (!m_activeScene)
+	if (!mActiveScene)
 		return;
 
-	m_activeScene->Update();
+	mActiveScene->Update();
 }
 
 void SceneManager::PostUpdate()
 {
-	if (!m_activeScene)
+	if (!mActiveScene)
 		return;
 
-	m_activeScene->PostUpdate();
+	mActiveScene->PostUpdate();
 }
 
 void SceneManager::PreRender()
 {
-	if (!m_activeScene)
+	if (!mActiveScene)
 		return;
 
-	m_activeScene->PreRender();
+	mActiveScene->PreRender();
 }
 
 void SceneManager::Render()
 {
-	if (!m_activeScene)
+	if (!mActiveScene)
 		return;
 
-	m_activeScene->Render();
+	mActiveScene->Render();
 }
 
 void SceneManager::PostRender()
 {
-	if (!m_activeScene)
+	if (!mActiveScene)
 		return;
 
-	m_activeScene->PostRender();
+	mActiveScene->PostRender();
 }
 
 void SceneManager::Clear()

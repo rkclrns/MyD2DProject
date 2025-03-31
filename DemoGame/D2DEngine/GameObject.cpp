@@ -13,7 +13,7 @@ GameObject::~GameObject()
 
 void GameObject::PreUpdate()
 {
-	for (auto* e : m_components)
+	for (auto* e : mComponents)
 	{
 		e->PreUpdate();
 	}
@@ -21,7 +21,7 @@ void GameObject::PreUpdate()
 
 void GameObject::Update()
 {
-	for (auto* e : m_components)
+	for (auto* e : mComponents)
 	{
 		e->Update();
 	}
@@ -29,7 +29,7 @@ void GameObject::Update()
 
 void GameObject::PostUpdate()
 {
-	for (auto* e : m_components)
+	for (auto* e : mComponents)
 	{
 		e->PostUpdate();
 	}
@@ -37,7 +37,7 @@ void GameObject::PostUpdate()
 
 void GameObject::PreRender()
 {
-	for (auto* e : m_components)
+	for (auto* e : mComponents)
 	{
 		e->PreRender();
 	}
@@ -45,7 +45,7 @@ void GameObject::PreRender()
 
 void GameObject::Render()
 {
-	for (auto* e : m_components)
+	for (auto* e : mComponents)
 	{
 		e->Render();
 	}
@@ -53,7 +53,7 @@ void GameObject::Render()
 
 void GameObject::PostRender()
 {
-	for (auto* e : m_components)
+	for (auto* e : mComponents)
 	{
 		e->PostRender();
 	}

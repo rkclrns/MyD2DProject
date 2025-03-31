@@ -8,7 +8,7 @@ public:
 	Scene();
 	virtual ~Scene();
 
-	std::list<GameObject*> m_GameObjects;
+	std::list<GameObject*> mGameObjects;
 
 	virtual void Initialize();
 	virtual void PreUpdate();
@@ -18,15 +18,18 @@ public:
 	virtual void Render();
 	virtual void PostRender();
 
-	std::wstring GetSceneName() { return m_Name; }
-	void SetSceneName(const std::wstring name) { m_Name = name; }
+	virtual void OnEnter();
+	virtual void OnExit();
+
+	std::wstring GetSceneName() { return mName; }
+	void SetSceneName(const std::wstring name) { mName = name; }
 
 	// 템플릿 함수로 GameObject를 생성한다.
 	template<typename T>
 	T* CreateGameObject();
 
 private:
-	std::wstring m_Name;
+	std::wstring mName;
 };
 
 template<typename T>
@@ -35,7 +38,7 @@ T* Scene::CreateGameObject()
 	bool bIsBase = std::is_base_of<GameObject, T>::value;
 	assert(bIsBase == true);	// GameObject를 상속받은 클래스만 생성할 수 있다.
 	T* newObject = new T();
-	m_GameObjects.push_back(newObject);
+	mGameObjects.push_back(newObject);
 	return newObject;
 }
 

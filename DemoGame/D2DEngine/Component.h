@@ -10,6 +10,7 @@ public:
 	GameObject* GetOwner() { return m_pOwner; }
 	void SetOwner(GameObject* pOwner) { m_pOwner = pOwner; }
 
+	virtual void Initialize();
 	virtual void PreUpdate() = 0;
 	virtual void Update() = 0;
 	virtual void PostUpdate() = 0;

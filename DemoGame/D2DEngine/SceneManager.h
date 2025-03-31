@@ -9,17 +9,15 @@ public:
 	SceneManager();
 	virtual ~SceneManager();
 
-	static std::map<const std::wstring, Scene*> m_Scenes;
-	static Scene* m_activeScene;
+	static std::map<const std::wstring, Scene*> mScenes;
+	static Scene* mActiveScene;
 
 public:
 	static void ChangeWorld(std::wstring sceneName);
 	
 	template <typename T>
 	static T* CreateScene(const std::wstring& name);
-
 	static Scene* FindScene(const std::wstring& name);
-	static Scene* LoadScene(const std::wstring& name);
 
 	static void Initialize();
 	static void PreUpdate();
@@ -40,7 +38,7 @@ T* SceneManager::CreateScene(const std::wstring& name)
 	scene->SetSceneName(name);
 	scene->Initialize();
 
-	m_Scenes.insert(std::make_pair(name, scene));
+	mScenes.insert(std::make_pair(name, scene));
 
 	return scene;
 }

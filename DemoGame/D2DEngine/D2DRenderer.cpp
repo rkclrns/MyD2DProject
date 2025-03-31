@@ -16,11 +16,11 @@ D2DRenderer::~D2DRenderer()
 
 }
 
-D2D1_MATRIX_3X2_F D2DRenderer::m_cameraTransform = D2D1::Matrix3x2F::Identity();
+D2D1_MATRIX_3X2_F D2DRenderer::mCameraTransform = D2D1::Matrix3x2F::Identity();
 
 void D2DRenderer::Initialize(HWND hWnd)
 {
-	m_hWnd = hWnd;
+	mHWnd = hWnd;
 	HRESULT hr = S_OK;
 
 	// COM 사용 시작
@@ -66,7 +66,7 @@ void D2DRenderer::Initialize(HWND hWnd)
 
 		// Create a Direct2D render target
 		RECT rc;
-		GetClientRect(m_hWnd, &rc);
+		GetClientRect(mHWnd, &rc);
 
 		D2D1_SIZE_U size = D2D1::SizeU(
 			rc.right - rc.left,
@@ -74,7 +74,7 @@ void D2DRenderer::Initialize(HWND hWnd)
 
 		hr = m_pD2DFactory->CreateHwndRenderTarget(
 			D2D1::RenderTargetProperties(),
-			D2D1::HwndRenderTargetProperties(m_hWnd, size),
+			D2D1::HwndRenderTargetProperties(mHWnd, size),
 			&m_pRenderTarget);
 	}
 	if (SUCCEEDED(hr))

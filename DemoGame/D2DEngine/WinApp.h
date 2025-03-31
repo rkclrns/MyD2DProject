@@ -20,11 +20,11 @@ public:
 	virtual void Render();
 
 private:
-	HINSTANCE m_hInstance;
-	HWND m_hWnd;
+	HINSTANCE mHInstance;
+	HWND mHWnd;
 
-	int m_width;
-	int m_height;
+	int mWidth;
+	int mHeight;
 
 	void WindowInitialize();
 	static void PlaceInCenterOfScreen(HWND window, DWORD style, DWORD exStyle);

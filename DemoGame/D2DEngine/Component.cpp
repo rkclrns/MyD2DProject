@@ -10,3 +10,8 @@ Component::~Component()
 {
 
 }
+
+void Component::Initialize()
+{
+
+}

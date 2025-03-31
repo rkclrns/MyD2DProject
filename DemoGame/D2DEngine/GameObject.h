@@ -22,8 +22,8 @@ public:
 
 	Transform transform;
 
-	void SetState(eObjectState eState) { m_state = eState; }
-	eObjectState GetState() { return m_state; }
+	void SetState(eObjectState eState) { mState = eState; }
+	eObjectState GetState() { return mState; }
 
 	template <typename T>
 	T* GetComponent();
@@ -33,8 +33,8 @@ public:
 
 
 private:
-	std::vector<Component*> m_components;
-	eObjectState m_state = eObjectState::ACTIVE;
+	std::vector<Component*> mComponents;
+	eObjectState mState = eObjectState::ACTIVE;
 };
 
 
@@ -46,7 +46,7 @@ T* GameObject::GetComponent()
 
 	T* component = nullptr;
 
-	for (auto* e : m_components)
+	for (auto* e : mComponents)
 	{
 		if (typeid(e).name() == typeid(T).name)
 			component = e;
@@ -64,8 +64,9 @@ T* GameObject::AddComponent()
 
 	T* newCompenent = new T();
 	newCompenent->SetOwner(this);
+	newCompenent->Initialize();
 
-	m_components.push_back(newCompenent);
+	mComponents.push_back(newCompenent);
 
 	return newCompenent;
 };

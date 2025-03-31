@@ -9,7 +9,7 @@ public:
 	D2DRenderer();
 	~D2DRenderer();
 
-	static D2D1_MATRIX_3X2_F m_cameraTransform;		// 카메라 월드 역행렬
+	static D2D1_MATRIX_3X2_F mCameraTransform;		// 카메라 월드 역행렬
 
 	void					Initialize(HWND hWnd);
 	void					Uninitialize();
@@ -36,9 +36,9 @@ public:
 
 private:
 
-	HWND					m_hWnd;						// 렌더타겟을 생성할 윈도우 핸들
-	D2D_SIZE_U				m_ScreenSize;	            // 이건 안쓰는 변수?
-	D2D_SIZE_U				m_ClientSize;				// 렌더타겟의 크기
+	HWND					mHWnd;						// 렌더타겟을 생성할 윈도우 핸들
+	D2D_SIZE_U				mScreenSize;	            // 이건 안쓰는 변수?
+	D2D_SIZE_U				mClientSize;				// 렌더타겟의 크기
 	
 	ID2D1HwndRenderTarget*  m_pRenderTarget;			// D2D 렌더타겟
 	ID2D1Factory*			m_pD2DFactory;				// D2D 개체 인터페이스 포인터 변수

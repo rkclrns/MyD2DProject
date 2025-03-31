@@ -23,10 +23,10 @@ ResourceManager* WinApp::resource = nullptr;
  
 void WinApp::Initialize(HINSTANCE hInstance)
 {
-	m_hInstance = hInstance;
+	mHInstance = hInstance;
 
 	WindowInitialize();
-	d2d->Initialize(m_hWnd);
+	d2d->Initialize(mHWnd);
 
 	SceneManager::Initialize();
 	TimeSystem::Initialize();
@@ -89,8 +89,8 @@ void WinApp::WindowInitialize()
 	wndClass.lpfnWndProc = WndProc;													// 윈도우 메세지 받을 때 호출될 함수 지정
 	wndClass.cbClsExtra = 0;
 	wndClass.cbWndExtra = 0;
-	wndClass.hInstance = m_hInstance;												// 인스턴스 저장
-	wndClass.hIcon = LoadIcon(m_hInstance, IDI_APPLICATION);						// 아이콘 관련 설정
+	wndClass.hInstance = mHInstance;												// 인스턴스 저장
+	wndClass.hIcon = LoadIcon(mHInstance, IDI_APPLICATION);						// 아이콘 관련 설정
 	wndClass.hCursor = LoadCursor(NULL, IDC_ARROW);									// 커서 관련 설정
 	wndClass.hbrBackground = static_cast<HBRUSH>(GetStockObject(LTGRAY_BRUSH));		// 윈도우 배경 설정
 	wndClass.lpszMenuName = NULL;													// 메뉴 없음
@@ -108,18 +108,18 @@ void WinApp::WindowInitialize()
 	::AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, FALSE);
 
 	// 조정된 크기에서 다시 연산
-	m_width = rect.right - rect.left;
-	m_height = rect.bottom - rect.top;
+	mWidth = rect.right - rect.left;
+	mHeight = rect.bottom - rect.top;
 
 	// 윈도우 생성
 	// 윈도우 클래스 명, 창 제목, 창스타일, 창의 시작좌표,
 	// 조정된 창 크기, 부모윈도우와 메뉴 없음, 실행 인스턴스, 추가 매개변수 없음
-	m_hWnd = CreateWindow(appName, appName, WS_OVERLAPPED | WS_SYSMENU,
-		SCREEN_START_LEFT, SCREEN_START_TOP, m_width, m_height, NULL, NULL, m_hInstance, NULL);
+	mHWnd = CreateWindow(appName, appName, WS_OVERLAPPED | WS_SYSMENU,
+		SCREEN_START_LEFT, SCREEN_START_TOP, mWidth, mHeight, NULL, NULL, mHInstance, NULL);
 
 	// 
-	ShowWindow(m_hWnd, SW_SHOWNORMAL);
-	UpdateWindow(m_hWnd);
+	ShowWindow(mHWnd, SW_SHOWNORMAL);
+	UpdateWindow(mHWnd);
 }
 
 void WinApp::PlaceInCenterOfScreen(HWND window, DWORD style, DWORD exStyle)
