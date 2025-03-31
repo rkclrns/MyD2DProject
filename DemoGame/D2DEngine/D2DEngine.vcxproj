@@ -23,6 +23,7 @@
     <ClInclude Include="Component.h" />
     <ClInclude Include="Helper.h" />
     <ClInclude Include="InputSystem.h" />
+    <ClInclude Include="Resource.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="WinApp.h" />
@@ -40,6 +41,7 @@
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Helper.cpp" />
     <ClCompile Include="InputSystem.cpp" />
+    <ClCompile Include="Resource.cpp" />
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="Vector2.cpp" />
     <ClCompile Include="WinApp.cpp" />

@@ -69,6 +69,9 @@
     <ClInclude Include="Animation.h">
       <Filter>source\core\component</Filter>
     </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>source\framework</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Helper.cpp">
@@ -78,9 +81,6 @@
       <Filter>source\framework</Filter>
     </ClCompile>
     <ClCompile Include="SceneManager.cpp">
-      <Filter>source\framework</Filter>
-    </ClCompile>
-    <ClCompile Include="D2DRenderer.cpp">
       <Filter>source\framework</Filter>
     </ClCompile>
     <ClCompile Include="InputSystem.cpp">
@@ -112,6 +112,12 @@
     </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>source\core\component</Filter>
+    </ClCompile>
+    <ClCompile Include="D2DRenderer.cpp">
+      <Filter>source\framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Resource.cpp">
+      <Filter>source\framework</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
