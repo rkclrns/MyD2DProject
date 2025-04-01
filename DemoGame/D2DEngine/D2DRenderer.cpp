@@ -152,19 +152,25 @@ void D2DRenderer::DrawRect(const D2D1_RECT_F& rectPoint, const D2D1_COLOR_F& col
 void D2DRenderer::DrawRect(const D2D1_VECTOR_2F& position, const D2D1_SIZE_F& rectSize, const D2D1_COLOR_F& color, bool rectFill, float alpha)
 {
 	// 중앙 기준으로 그리기
-	float halfWidth = rectSize.width * 0.5f;
-	float halfHeight = rectSize.height * 0.5f;
+	//float halfWidth = rectSize.width * 0.5f;
+	//float halfHeight = rectSize.height * 0.5f;
+	//
+	//D2D1_RECT_F rectPoint{};
+	//rectPoint.left = position.x - halfWidth;
+	//rectPoint.top = position.y - halfHeight;
+	//rectPoint.right = position.x + halfWidth;
+	//rectPoint.bottom = position.y + halfHeight;
 
 	D2D1_RECT_F rectPoint{};
-	rectPoint.left = position.x - halfWidth;
-	rectPoint.top = position.y - halfHeight;
-	rectPoint.right = position.x + halfWidth;
-	rectPoint.bottom = position.y + halfHeight;
+	rectPoint.left = position.x;
+	rectPoint.top = position.y;
+	rectPoint.right = position.x + rectSize.width;
+	rectPoint.bottom = position.y + rectSize.height;
 
 	m_pBrush->SetColor(color);
 	m_pBrush->SetOpacity(alpha);
 
-	if (rectFill)
+	if (!rectFill)
 	{
 		m_pRenderTarget->DrawRectangle(rectPoint, m_pBrush);
 	}

@@ -34,12 +34,11 @@ void BoxCollider::PreRender()
 
 void BoxCollider::Render()
 {
-	Transform* tr = GetOwner()->transform;
+	Vector2 point = GetOwner()->transform->position + mOffset;
 
-	D2D1_VECTOR_2F pos = { tr->position.x, tr->position.y };
-	D2D1_SIZE_F size = { 10.0f, 10.0f };
+	D2D1_VECTOR_2F pos = { point.x, point.y };
 
-	D2DRenderer::GetInstance()->DrawRect(pos, size, D2D1::ColorF(D2D1::ColorF::White), true);
+	D2DRenderer::GetInstance()->DrawRect(pos, {mSize.x + mOffset.x, mSize.y + mOffset.y}, D2D1::ColorF(D2D1::ColorF::White), false);
 }
 
 void BoxCollider::PostRender()

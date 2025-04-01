@@ -1,6 +1,7 @@
 #include "..\D2DEngine\pch.h"
 #include "PlayScene.h"
 #include "..\D2DEngine\SpriteRenderer.h"
+#include "..\D2DEngine\BoxCollider.h"
 
 void PlayScene::Initialize()
 {
@@ -32,21 +33,26 @@ void PlayScene::Initialize()
 		for (size_t j = 0; j < 18; j++)
 		{
 			GameObject* kuramon = CreateGameObject<GameObject>(L"Enemy");
+
+			BoxCollider* kuramoCollider = kuramon->AddComponent<BoxCollider>();
+			kuramoCollider->SetSize(100, 100);
+			kuramoCollider->SetOffset(-50, -50);
+
 			SpriteRenderer* kuramonSprite = kuramon->AddComponent<SpriteRenderer>();
 			kuramonSprite->SetSprite(ResourceManager::GetInstance()->
 				Find<Sprite>(L"Kuramon"));
 
-			kuramon->transform->SetPosition(Vector2(j * 100.f, i * 100.f));
+			kuramon->transform->SetPosition(Vector2(j * 100.0f, i * 100.0f));
 
 			if (i % 2 != 0)
 				kuramon->transform->position.x += 100;
 
 			kuramon->transform->SetPivot(kuramonSprite->GetSprite()->GetCenter());
 
-			map[i].emplace_back(kuramon);
+			map[i].push_back(kuramon);
 		}
 
-		map.emplace_back(map[i]);
+		map.push_back(map[i]);
 	}
 }
 

@@ -22,7 +22,7 @@ public:
 	void SetOffset(float x, float y);
 	Vector2& GetOffset();
 
-private:
+protected:
 	Vector2 mOffset;
 };
 
