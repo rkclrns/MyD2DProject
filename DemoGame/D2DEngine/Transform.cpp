@@ -78,7 +78,8 @@ void Transform::UpdateWorldMatrix()
     // (Scale ¡æ Rotation ¡æ Translation ¼ø¼­)
     worldMatrix = mInversPivot * mScale * mRotation * mPivot * mPosition;
 
-    if (parent) {
+    if (parent) 
+    {
         worldMatrix = parent->worldMatrix * worldMatrix;
     }
 

@@ -21,6 +21,8 @@ void GameObject::PreUpdate()
 
 void GameObject::Update()
 {
+	transform->Update();
+
 	for (auto* e : mComponents)
 	{
 		e->Update();

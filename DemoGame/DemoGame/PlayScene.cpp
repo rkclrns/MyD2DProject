@@ -1,7 +1,53 @@
+#include "..\D2DEngine\pch.h"
 #include "PlayScene.h"
+#include "..\D2DEngine\SpriteRenderer.h"
 
 void PlayScene::Initialize()
 {
+	bg = CreateGameObject<GameObject>(L"Background");
+	SpriteRenderer* bgSprite = bg->AddComponent<SpriteRenderer>();
+	
+	bgSprite->SetSprite(ResourceManager::GetInstance()->
+		Load<Sprite>(L"Background", L"../Resource/BG.jpg"));
+
+	bg->transform->SetPivot(bgSprite->GetSprite()->GetCenter());
+
+	coromon = CreateGameObject<GameObject>(L"Coromon");
+	SpriteRenderer* coromonSprite = coromon->AddComponent<SpriteRenderer>();
+	coromonSprite->SetSprite(ResourceManager::GetInstance()->
+		Load<Sprite>(L"Coromon", L"../Resource/Coromon.png"));
+	coromon->transform->SetPosition(Vector2(960 - coromonSprite->GetSprite()->GetSize().x / 2, 700.f));
+	coromon->transform->SetPivot(coromonSprite->GetSprite()->GetCenter());
+
+
+	ResourceManager::GetInstance()->
+		Load<Sprite>(L"Kuramon", L"../Resource/kuramon.png");
+
+	map.resize(5);
+
+	for (size_t i = 0; i < 5; i++)
+	{
+		map[i].resize(18);
+
+		for (size_t j = 0; j < 18; j++)
+		{
+			GameObject* kuramon = CreateGameObject<GameObject>(L"Enemy");
+			SpriteRenderer* kuramonSprite = kuramon->AddComponent<SpriteRenderer>();
+			kuramonSprite->SetSprite(ResourceManager::GetInstance()->
+				Find<Sprite>(L"Kuramon"));
+
+			kuramon->transform->SetPosition(Vector2(j * 100.f, i * 100.f));
+
+			if (i % 2 != 0)
+				kuramon->transform->position.x += 100;
+
+			kuramon->transform->SetPivot(kuramonSprite->GetSprite()->GetCenter());
+
+			map[i].emplace_back(kuramon);
+		}
+
+		map.emplace_back(map[i]);
+	}
 }
 
 void PlayScene::PreUpdate()
@@ -10,7 +56,9 @@ void PlayScene::PreUpdate()
 
 void PlayScene::Update()
 {
+	__super::Update();
 
+	InputUpdate();
 }
 
 void PlayScene::PostUpdate()
@@ -23,8 +71,22 @@ void PlayScene::PreRender()
 
 void PlayScene::Render()
 {
+	__super::Render();
 }
 
 void PlayScene::PostRender()
 {
+
+}
+
+void PlayScene::InputUpdate()
+{
+	if (InputSystem::GetKeyPressed(eKeyCode::S))
+		coromon->transform->position.y += moveSpeed * TimeSystem::GetDeltaTime();
+	else if (InputSystem::GetKeyPressed(eKeyCode::W))
+		coromon->transform->position.y -= moveSpeed * TimeSystem::GetDeltaTime();
+	else if (InputSystem::GetKeyPressed(eKeyCode::D))
+		coromon->transform->position.x += moveSpeed * TimeSystem::GetDeltaTime();
+	else if (InputSystem::GetKeyPressed(eKeyCode::A))
+		coromon->transform->position.x -= moveSpeed * TimeSystem::GetDeltaTime();
 }

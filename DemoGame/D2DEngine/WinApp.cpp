@@ -7,19 +7,12 @@
 
 WinApp::WinApp()
 {
-	// 생성
-	//d2d = new D2DRenderer;
-	//resource = new ResourceManager;
 }
 
 WinApp::~WinApp()
 {
 
 }
-
-// 스태틱 초기화
-//D2DRenderer* WinApp::d2d = nullptr;
-//ResourceManager* WinApp::resource = nullptr;
  
 void WinApp::Initialize(HINSTANCE hInstance)
 {

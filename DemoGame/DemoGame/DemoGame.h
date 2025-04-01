@@ -21,9 +21,4 @@ public:
 
 private:
 	PlayScene* playScene = nullptr;
-	ID2D1Bitmap* image = nullptr;
-	GameObject* test = nullptr;
-
-	float testf = 1;
-	float moveSpeed = 100.f;
 };

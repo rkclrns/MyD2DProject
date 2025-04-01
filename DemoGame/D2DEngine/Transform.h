@@ -1,7 +1,9 @@
 #pragma once
 #include "Component.h"
+#include "Vector2.h"
+#include <list>
+#include <d2d1.h>
 
-class Vector2;
 class Transform
 	: public Component
 {

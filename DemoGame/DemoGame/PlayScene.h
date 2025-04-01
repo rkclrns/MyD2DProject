@@ -12,6 +12,15 @@ public:
 	void PreRender() override;
 	void Render() override;
 	void PostRender() override;
+
+	void InputUpdate();
+
 private:
+	GameObject* bg = nullptr;
+	GameObject* coromon = nullptr;
+
+	std::vector<std::vector<GameObject*>> map;
+
+	float moveSpeed = 1000.f;
 };
 

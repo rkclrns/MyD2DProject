@@ -1,13 +1,12 @@
 #include "pch.h"
 #include "ResourceManager.h"
-#include "D2DRenderer.h"
 
 // 게임에 사용되는 데이터들 관리
 // 이미지, 사운드, 폰트 등
 
 ResourceManager::ResourceManager()
 {
-	pInstance = this;
+
 }
 
 ResourceManager::~ResourceManager()
@@ -17,22 +16,16 @@ ResourceManager::~ResourceManager()
 
 ResourceManager* ResourceManager::pInstance = nullptr;
 
-bool ResourceManager::CreateD2DBitmapFromFile(std::wstring strFilePath, ID2D1Bitmap** bitmap, D2DRenderer* d2d)
+ResourceManager* ResourceManager::GetInstance()
 {
-	return false;
+	if (!pInstance)
+		pInstance = new ResourceManager();
+
+	return pInstance;
 }
 
-void ResourceManager::ReleaseD2DBitmap(std::wstring strFilePath)
+void ResourceManager::DestroyInstance() 
 {
-
+	delete pInstance;  // 해제
+	pInstance = nullptr;
 }
-
-//bool ResourceManager::CreateAnimationAsset(std::wstring strFilePath, AnimationAsset** asset)
-//{
-//	return false;
-//}
-
-//void ResourceManager::ReleaseAnimationAsset(std::wstring strFilePath)
-//{
-//	
-//}

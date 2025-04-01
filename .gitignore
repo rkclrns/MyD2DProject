@@ -16,3 +16,4 @@ DemoGame/.vs/DemoGame/v17/.suo
 *.lib
 *.exe
 *.txt
+.vs/slnx.sqlite

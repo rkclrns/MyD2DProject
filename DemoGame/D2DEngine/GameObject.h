@@ -1,5 +1,7 @@
 #pragma once
 #include "Transform.h"
+#include <vector>
+#include <assert.h>
 
 enum class eObjectState
 {
@@ -20,6 +22,9 @@ public:
 	virtual void Render();
 	virtual void PostRender();
 
+	std::wstring GetName() { return mName; }
+	void SetName(const std::wstring name) { mName = name; }
+
 	Transform* transform;
 
 	void SetState(eObjectState eState) { mState = eState; }
@@ -33,6 +38,7 @@ public:
 
 
 private:
+	std::wstring mName;
 	std::vector<Component*> mComponents;
 	eObjectState mState = eObjectState::ACTIVE;
 };
@@ -52,7 +58,7 @@ T* GameObject::GetComponent()
 			component = e;
 	}
 
-	assert(component != nullptr);	// 찾지 못했다면 에러띄워주기
+	//assert(component != nullptr);	// 찾지 못했다면 에러띄워주기
 	return component;
 };
 

@@ -1,45 +1,59 @@
 #pragma once
 #include "Resource.h"
-
-class D2DRenderer;
-
-enum class eResourceType
-{
-	TEXTURE,
-	FONT,
-	SIZE,
-};
+#include <map>
+#include <assert.h>
 
 class ResourceManager
 {
 public:
+
+	static ResourceManager* GetInstance();
+	static void DestroyInstance();
+
+	template <typename T>
+	T* Find(const std::wstring& key)
+	{
+		std::map<std::wstring, Resource*>::iterator itr = mResources.find(key);
+
+		if (itr == mResources.end())
+			return nullptr;
+
+		return dynamic_cast<T*>(itr->second);
+	}
+
+	template <typename T>
+	T* Load(const std::wstring& key, const std::wstring& path)
+	{
+		bool bIsBase = std::is_base_of<Resource, T>::value;	// 리소스 상속 받은 것만 가능함
+		assert(bIsBase == true);
+
+		T* resource = ResourceManager::Find<T>(key);
+
+		if (resource)
+			return resource;
+
+		resource = new T();
+		resource->SetName(key);
+		resource->SetPath(path);
+
+		if (!resource->Load())
+			assert(false && "Resource Load Failed!");
+
+		mResources.insert(std::make_pair(key, resource));
+
+		return resource;
+	}
+
+private:
+
 	ResourceManager();
 	~ResourceManager();
 
+	// 복사 & 대입 연산자 삭제
+	ResourceManager(const ResourceManager&) = delete;
+	ResourceManager& operator=(const ResourceManager&) = delete;
+
 	static ResourceManager* pInstance;
 
-	bool CreateD2DBitmapFromFile(std::wstring strFilePath, ID2D1Bitmap** bitmap, D2DRenderer* d2d);
-	void ReleaseD2DBitmap(std::wstring strFilePath);
-
-	//bool CreateAnimationAsset(std::wstring strFilePath, AnimationAsset** asset);
-	//void ReleaseAnimationAsset(std::wstring strFilePath);
-
-	template <typename T>
-	static T* Find(const std::wstring& key);
-
-private:
-	std::wstring mPath;
-	eResourceType mType;
 	std::map<std::wstring, Resource*> mResources;
 };
-
-template <typename T>
-static T* ResourceManager::Find(const std::wstring& key)
-{
-	std::map<std::wstring, Resource*>::iterator itr = mResources.find(key);
-
-	if (itr == mResources.end())
-		return nullptr;
-
-	return dynamic_cast<T*>(itr->second);
-}

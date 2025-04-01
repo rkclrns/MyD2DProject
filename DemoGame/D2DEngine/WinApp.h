@@ -8,9 +8,6 @@ public:
 	WinApp();
 	virtual ~WinApp();
 
-	static D2DRenderer* d2d;
-	static ResourceManager* resource;
-
 	virtual void Initialize(HINSTANCE hInstance);
 	virtual void Run();
 	virtual void UnInitialize();
