@@ -31,18 +31,19 @@ public:
 
 	Transform* GetParent() { return parent; }
 	D2D1_MATRIX_3X2_F& GetWorldMatrix() { return worldMatrix; }
+	Vector2 GetWorldPosition();
 
 private:
 	Transform* parent = nullptr;
 	std::list<Transform*> childsList;
 
+	Vector2 worldPosition{};
 	D2D1_MATRIX_3X2_F worldMatrix;
 
 	D2D1_MATRIX_3X2_F mPosition;
 	D2D1_MATRIX_3X2_F mRotation;
 	D2D1_MATRIX_3X2_F mScale;
 	D2D1_MATRIX_3X2_F mPivot;
-	D2D1_MATRIX_3X2_F mInversPivot;
 
 	void UpdateWorldMatrix();
 };

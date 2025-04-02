@@ -23,6 +23,7 @@
     <ClInclude Include="BoxCollider.h" />
     <ClInclude Include="CircleCollider.h" />
     <ClInclude Include="Collider.h" />
+    <ClInclude Include="ColliderManager.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="CFont.h" />
     <ClInclude Include="Helper.h" />
@@ -47,6 +48,7 @@
     <ClCompile Include="BoxCollider.cpp" />
     <ClCompile Include="CircleCollider.cpp" />
     <ClCompile Include="Collider.cpp" />
+    <ClCompile Include="ColliderManager.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="CFont.cpp" />
     <ClCompile Include="Helper.cpp" />

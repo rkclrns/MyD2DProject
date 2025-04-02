@@ -12,6 +12,12 @@ enum class eComponentType
 	End,
 };
 
+enum class eComponentState
+{
+	ACTIVE,
+	PASSIVE,
+};
+
 class Component
 {
 public:
@@ -19,7 +25,12 @@ public:
 	virtual ~Component();
 
 	GameObject* GetOwner() { return m_pOwner; }
+	eComponentType GetComponentType() { return mType; }
+	eComponentState GetComponentState() { return mState; }
+
 	void SetOwner(GameObject* pOwner) { m_pOwner = pOwner; }
+	void SetComponentType(eComponentType type) { mType = type; }
+	void SetComponentState(eComponentState state) { mState = state; }
 
 	virtual void Initialize();
 	virtual void PreUpdate() = 0;
@@ -32,5 +43,6 @@ public:
 private:
 	GameObject* m_pOwner;
 	eComponentType mType;
+	eComponentState mState;
 };
 

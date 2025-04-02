@@ -6,20 +6,16 @@
 void PlayScene::Initialize()
 {
 	bg = CreateGameObject<GameObject>(L"Background");
-	SpriteRenderer* bgSprite = bg->AddComponent<SpriteRenderer>();
-	
-	bgSprite->SetSprite(ResourceManager::GetInstance()->
+	bg->sprite->SetSprite(ResourceManager::GetInstance()->
 		Load<Sprite>(L"Background", L"../Resource/BG.jpg"));
-
-	bg->transform->SetPivot(bgSprite->GetSprite()->GetCenter());
+	bg->transform->SetPivot(bg->sprite->GetSprite()->GetCenter());
 
 	coromon = CreateGameObject<GameObject>(L"Coromon");
-	SpriteRenderer* coromonSprite = coromon->AddComponent<SpriteRenderer>();
-	coromonSprite->SetSprite(ResourceManager::GetInstance()->
+	coromon->sprite->SetSprite(ResourceManager::GetInstance()->
 		Load<Sprite>(L"Coromon", L"../Resource/Coromon.png"));
-	coromon->transform->SetPosition(Vector2(960 - coromonSprite->GetSprite()->GetSize().x / 2, 700.f));
-	coromon->transform->SetPivot(coromonSprite->GetSprite()->GetCenter());
-
+	coromon->transform->SetPosition(Vector2(960 - coromon->sprite->GetSprite()->GetSize().x / 2, 700.f));
+	coromon->transform->SetPivot(Vector2(150, 150));
+	coromon->boxCollider->SetSize(300, 300);
 
 	ResourceManager::GetInstance()->
 		Load<Sprite>(L"Kuramon", L"../Resource/kuramon.png");
@@ -29,29 +25,24 @@ void PlayScene::Initialize()
 	for (size_t i = 0; i < 5; i++)
 	{
 		map[i].resize(18);
-
+	
 		for (size_t j = 0; j < 18; j++)
 		{
 			GameObject* kuramon = CreateGameObject<GameObject>(L"Enemy");
-
-			BoxCollider* kuramoCollider = kuramon->AddComponent<BoxCollider>();
-			kuramoCollider->SetSize(100, 100);
-			kuramoCollider->SetOffset(-50, -50);
-
-			SpriteRenderer* kuramonSprite = kuramon->AddComponent<SpriteRenderer>();
-			kuramonSprite->SetSprite(ResourceManager::GetInstance()->
-				Find<Sprite>(L"Kuramon"));
-
+			
 			kuramon->transform->SetPosition(Vector2(j * 100.0f, i * 100.0f));
-
 			if (i % 2 != 0)
 				kuramon->transform->position.x += 100;
 
-			kuramon->transform->SetPivot(kuramonSprite->GetSprite()->GetCenter());
+			kuramon->sprite->SetSprite(ResourceManager::GetInstance()->
+				Find<Sprite>(L"Kuramon"));
 
+			kuramon->transform->SetPivot(Vector2(50, 50));
+			kuramon->boxCollider->SetSize(100, 100);
+			
 			map[i].push_back(kuramon);
 		}
-
+	
 		map.push_back(map[i]);
 	}
 }

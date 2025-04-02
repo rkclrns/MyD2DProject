@@ -8,13 +8,16 @@ public:
 	CircleCollider();
 	~CircleCollider();
 
-	virtual void Initialize();
-	virtual void PreUpdate();
-	virtual void Update();
-	virtual void PostUpdate();
-	virtual void PreRender();
-	virtual void Render();
-	virtual void PostRender();
+	void Initialize();
+	void PreUpdate();
+	void Update();
+	void PostUpdate();
+	void PreRender();
+	void Render();
+	void PostRender();
+
+	bool isCollide(Collider* other);
+	bool isCollide(const Vector2& point);
 
 private:
 	float mRadius;

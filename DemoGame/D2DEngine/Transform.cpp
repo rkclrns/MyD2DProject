@@ -65,10 +65,6 @@ void Transform::SetPivot(const Vector2& pivot)
 
 void Transform::UpdateWorldMatrix()
 {
-    // 중심 기준 행렬 추가
-    mPivot = D2D1::Matrix3x2F::Translation(pivot.x, pivot.y);
-    mInversPivot = D2D1::Matrix3x2F::Translation(-pivot.x, -pivot.y);
-
     // 로컬 행렬 계산
     mScale = D2D1::Matrix3x2F::Scale(scale.x, scale.y);
     mRotation = D2D1::Matrix3x2F::Rotation(rotation);
@@ -76,7 +72,7 @@ void Transform::UpdateWorldMatrix()
 
     // 월드 변환 행렬 계산 
     // (Scale → Rotation → Translation 순서)
-    worldMatrix = mInversPivot * mScale * mRotation * mPivot * mPosition;
+    worldMatrix =  mScale * mRotation * mPosition;
 
     if (parent) 
     {
@@ -87,4 +83,10 @@ void Transform::UpdateWorldMatrix()
     for (Transform* child : childsList) {
         child->UpdateWorldMatrix();
     }
+}
+
+Vector2 Transform::GetWorldPosition()
+{
+    UpdateWorldMatrix();
+    return Vector2(worldMatrix._31, worldMatrix._32);
 }

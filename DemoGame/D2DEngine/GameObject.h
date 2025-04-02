@@ -9,6 +9,8 @@ enum class eObjectState
 	PASSIVE,
 };
 
+class SpriteRenderer;
+class BoxCollider;
 class GameObject
 {
 public:
@@ -25,7 +27,9 @@ public:
 	std::wstring GetName() { return mName; }
 	void SetName(const std::wstring name) { mName = name; }
 
-	Transform* transform;
+	Transform* transform = nullptr;
+	SpriteRenderer* sprite = nullptr;
+	BoxCollider* boxCollider = nullptr;
 
 	void SetState(eObjectState eState) { mState = eState; }
 	eObjectState GetState() { return mState; }

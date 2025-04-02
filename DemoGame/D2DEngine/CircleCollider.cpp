@@ -2,6 +2,7 @@
 
 CircleCollider::CircleCollider()
 {
+	mType = eColliderType::CIRCLE;
 }
 
 CircleCollider::~CircleCollider()
@@ -34,4 +35,14 @@ void CircleCollider::Render()
 
 void CircleCollider::PostRender()
 {
+}
+
+bool CircleCollider::isCollide(Collider* other)
+{
+	return false;
+}
+
+bool CircleCollider::isCollide(const Vector2& point)
+{
+	return false;
 }

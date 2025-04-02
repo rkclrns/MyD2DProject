@@ -4,6 +4,7 @@
 Collider::Collider()
 	: Component(eComponentType::Collider)
 {
+
 }
 
 Collider::~Collider()
@@ -51,4 +52,14 @@ void Collider::SetOffset(float x, float y)
 Vector2& Collider::GetOffset()
 {
 	return mOffset;
+}
+
+Vector2& Collider::GetPosition()
+{
+	return mPosition;
+}
+
+eColliderType Collider::GetColliderType()
+{
+	return mType;
 }
