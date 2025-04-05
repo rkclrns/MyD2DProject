@@ -1,5 +1,6 @@
 #pragma once
 #include "Scene.h"
+#include <map>
 
 // 게임의 세계를 나타내는 클래스
 class SceneManager
@@ -18,6 +19,8 @@ public:
 	template <typename T>
 	static T* CreateScene(const std::wstring& name);
 	static Scene* FindScene(const std::wstring& name);
+
+	static Scene* GetActiveScene() { return mActiveScene; }
 
 	static void Initialize();
 	static void PreUpdate();

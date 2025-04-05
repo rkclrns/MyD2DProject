@@ -45,12 +45,23 @@ void BoxCollider::PostRender()
 
 bool BoxCollider::isCollide(Collider* other)
 {
-	return false;
+	BoxCollider* otherBox = static_cast<BoxCollider*>(other);
+
+	auto rectA = GetColliderRect();
+	auto rectB = otherBox->GetColliderRect();
+
+	return !(rectA.right < rectB.left ||
+		rectA.left > rectB.right ||
+		rectA.bottom < rectB.top ||
+		rectA.top > rectB.bottom);
 }
 
 bool BoxCollider::isCollide(const Vector2& point)
 {
-	return false;
+	auto rect = GetColliderRect();
+
+	return point.x >= rect.left && point.x <= rect.right &&
+		point.y >= rect.top && point.y <= rect.bottom;
 }
 
 void BoxCollider::SetSize(const Vector2& size)

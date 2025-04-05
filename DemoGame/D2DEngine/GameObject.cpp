@@ -9,6 +9,7 @@ GameObject::GameObject()
 	boxCollider = AddComponent<BoxCollider>();
 	sprite = AddComponent<SpriteRenderer>();
 	boxCollider->transform = this->transform;
+
 }
 
 GameObject::~GameObject()

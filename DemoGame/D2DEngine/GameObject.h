@@ -9,6 +9,16 @@ enum class eObjectState
 	PASSIVE,
 };
 
+enum class eObjectTag
+{
+	NONE,
+	PLAYER,
+	BULLET,
+	ENEMY,
+	UI,
+	SOUND,
+};
+
 class SpriteRenderer;
 class BoxCollider;
 class GameObject
@@ -27,6 +37,9 @@ public:
 	std::wstring GetName() { return mName; }
 	void SetName(const std::wstring name) { mName = name; }
 
+	eObjectTag GetTag() { return mTag; }
+	void SetTag(eObjectTag tag) { mTag = tag; }
+
 	Transform* transform = nullptr;
 	SpriteRenderer* sprite = nullptr;
 	BoxCollider* boxCollider = nullptr;
@@ -43,6 +56,7 @@ public:
 
 private:
 	std::wstring mName;
+	eObjectTag mTag;
 	std::vector<Component*> mComponents;
 	eObjectState mState = eObjectState::ACTIVE;
 };

@@ -5,12 +5,12 @@
 
 void PlayScene::Initialize()
 {
-	bg = CreateGameObject<GameObject>(L"Background");
+	bg = CreateGameObject<GameObject>(L"Background", eObjectTag::UI);
 	bg->sprite->SetSprite(ResourceManager::GetInstance()->
 		Load<Sprite>(L"Background", L"../Resource/BG.jpg"));
 	bg->transform->SetPivot(bg->sprite->GetSprite()->GetCenter());
 
-	coromon = CreateGameObject<GameObject>(L"Coromon");
+	coromon = CreateGameObject<GameObject>(L"Coromon", eObjectTag::PLAYER);
 	coromon->sprite->SetSprite(ResourceManager::GetInstance()->
 		Load<Sprite>(L"Coromon", L"../Resource/Coromon.png"));
 	coromon->transform->SetPosition(Vector2(960 - coromon->sprite->GetSprite()->GetSize().x / 2, 700.f));
@@ -28,7 +28,7 @@ void PlayScene::Initialize()
 	
 		for (size_t j = 0; j < 18; j++)
 		{
-			GameObject* kuramon = CreateGameObject<GameObject>(L"Enemy");
+			GameObject* kuramon = CreateGameObject<GameObject>(L"Enemy", eObjectTag::ENEMY);
 			
 			kuramon->transform->SetPosition(Vector2(j * 100.0f, i * 100.0f));
 			if (i % 2 != 0)

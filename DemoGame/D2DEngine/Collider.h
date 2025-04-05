@@ -26,6 +26,9 @@ public:
 	virtual void Render();
 	virtual void PostRender();
 
+	bool IsColliding() const { return bIsCollid; }
+	void SetColliding(bool val) { bIsCollid = val; }
+
 	virtual bool isCollide(Collider* other) = 0;
 	virtual bool isCollide(const Vector2& point) = 0;
 
@@ -39,6 +42,7 @@ public:
 	Transform* transform = nullptr;
 
 protected:
+	bool bIsCollid = false;
 	eColliderType mType;
 	Vector2 mPosition{};
 	Vector2 mOffset{};
