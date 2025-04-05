@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "SceneManager.h"
 #include "D2DRenderer.h"
+#include "ColliderManager.h"
 
 SceneManager::SceneManager()
 {
@@ -56,6 +57,7 @@ void SceneManager::Update()
 	if (!mActiveScene)
 		return;
 
+	ColliderManager::Update();
 	mActiveScene->Update();
 }
 

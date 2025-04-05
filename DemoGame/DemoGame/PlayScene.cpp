@@ -9,6 +9,7 @@ void PlayScene::Initialize()
 	bg->sprite->SetSprite(ResourceManager::GetInstance()->
 		Load<Sprite>(L"Background", L"../Resource/BG.jpg"));
 	bg->transform->SetPivot(bg->sprite->GetSprite()->GetCenter());
+	bg->boxCollider->SetComponentState(eComponentState::PASSIVE);
 
 	coromon = CreateGameObject<GameObject>(L"Coromon", eObjectTag::PLAYER);
 	coromon->sprite->SetSprite(ResourceManager::GetInstance()->
