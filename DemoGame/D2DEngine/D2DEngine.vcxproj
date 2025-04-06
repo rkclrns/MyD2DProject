@@ -28,6 +28,7 @@
     <ClInclude Include="CFont.h" />
     <ClInclude Include="Helper.h" />
     <ClInclude Include="InputSystem.h" />
+    <ClInclude Include="LineRenderer.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteRenderer.h" />
@@ -53,6 +54,7 @@
     <ClCompile Include="CFont.cpp" />
     <ClCompile Include="Helper.cpp" />
     <ClCompile Include="InputSystem.cpp" />
+    <ClCompile Include="LineRenderer.cpp" />
     <ClCompile Include="Resource.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteRenderer.cpp" />

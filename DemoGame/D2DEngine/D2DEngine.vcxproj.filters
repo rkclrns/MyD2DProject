@@ -126,6 +126,9 @@
     <ClInclude Include="ColliderManager.h">
       <Filter>source\framework\manager</Filter>
     </ClInclude>
+    <ClInclude Include="LineRenderer.h">
+      <Filter>source\core\component\renderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Helper.cpp">
@@ -193,6 +196,9 @@
     </ClCompile>
     <ClCompile Include="ColliderManager.cpp">
       <Filter>source\framework\manager</Filter>
+    </ClCompile>
+    <ClCompile Include="LineRenderer.cpp">
+      <Filter>source\core\component\renderer</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

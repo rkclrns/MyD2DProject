@@ -18,6 +18,7 @@ public:
 private:
 	GameObject* bg = nullptr;
 	GameObject* coromon = nullptr;
+	GameObject* line = nullptr;
 
 	std::vector<std::vector<GameObject*>> map;
 

@@ -36,7 +36,10 @@ void BoxCollider::PreRender()
 
 void BoxCollider::Render()
 {
-	D2DRenderer::GetInstance()->DrawRect(GetColliderRect(), D2D1::ColorF(D2D1::ColorF::Red), false);
+	if(!bIsCollid)
+		D2DRenderer::GetInstance()->DrawRect(GetColliderRect(), D2D1::ColorF(D2D1::ColorF::Green), false);
+	else
+		D2DRenderer::GetInstance()->DrawRect(GetColliderRect(), D2D1::ColorF(D2D1::ColorF::Red), false);
 }
 
 void BoxCollider::PostRender()

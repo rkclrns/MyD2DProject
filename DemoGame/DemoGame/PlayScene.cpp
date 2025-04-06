@@ -2,6 +2,7 @@
 #include "PlayScene.h"
 #include "..\D2DEngine\SpriteRenderer.h"
 #include "..\D2DEngine\BoxCollider.h"
+#include "..\D2DEngine\LineRenderer.h"
 
 void PlayScene::Initialize()
 {
@@ -20,6 +21,11 @@ void PlayScene::Initialize()
 
 	ResourceManager::GetInstance()->
 		Load<Sprite>(L"Kuramon", L"../Resource/kuramon.png");
+
+	line = CreateGameObject<GameObject>(L"Line", eObjectTag::UI);
+	LineRenderer* lineRenderer = line->AddComponent<LineRenderer>();
+	lineRenderer->SetStartPoint(coromon->transform->pivot);
+	lineRenderer->SetEndPoint(Vector2(960, 500));
 
 	map.resize(5);
 
@@ -79,11 +85,7 @@ void PlayScene::PostRender()
 
 void PlayScene::InputUpdate()
 {
-	if (InputSystem::GetKeyPressed(eKeyCode::S))
-		coromon->transform->position.y += moveSpeed * TimeSystem::GetDeltaTime();
-	else if (InputSystem::GetKeyPressed(eKeyCode::W))
-		coromon->transform->position.y -= moveSpeed * TimeSystem::GetDeltaTime();
-	else if (InputSystem::GetKeyPressed(eKeyCode::D))
+	if (InputSystem::GetKeyPressed(eKeyCode::D))
 		coromon->transform->position.x += moveSpeed * TimeSystem::GetDeltaTime();
 	else if (InputSystem::GetKeyPressed(eKeyCode::A))
 		coromon->transform->position.x -= moveSpeed * TimeSystem::GetDeltaTime();
