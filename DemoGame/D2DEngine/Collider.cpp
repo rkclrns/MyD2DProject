@@ -23,19 +23,11 @@ void Collider::Update()
 {
 }
 
-void Collider::PostUpdate()
-{
-}
-
-void Collider::PreRender()
-{
-}
-
 void Collider::Render()
 {
 }
 
-void Collider::PostRender()
+void Collider::Destroy()
 {
 }
 

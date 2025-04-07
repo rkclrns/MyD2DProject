@@ -10,6 +10,15 @@ Animation::~Animation()
 {
 }
 
+void Animation::Initialize()
+{
+	__super::Initialize();
+}
+
+void Animation::Destroy()
+{
+}
+
 void Animation::Update()
 {
 }

@@ -9,13 +9,11 @@ public:
 	LineRenderer();
 	~LineRenderer();
 
-	void Initialize();
-	void PreUpdate();
-	void Update();
-	void PostUpdate();
-	void PreRender();
-	void Render();
-	void PostRender();
+	void Initialize() override;
+	void PreUpdate() override;
+	void Update() override;
+	void Render() override;
+	void Destroy() override;
 
 	void SetStartPoint(Vector2 start) { mStartPoint = start; }
 	void SetEndPoint(Vector2 end) { mEndPoint = end; }

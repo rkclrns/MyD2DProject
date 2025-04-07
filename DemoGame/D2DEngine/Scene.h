@@ -14,10 +14,9 @@ public:
 	virtual void Initialize();
 	virtual void PreUpdate();
 	virtual void Update();
-	virtual void PostUpdate();
-	virtual void PreRender();
 	virtual void Render();
-	virtual void PostRender();
+	virtual void Release();
+	virtual void UnInitialize();
 
 	virtual void OnEnter();
 	virtual void OnExit();
@@ -41,9 +40,12 @@ T* Scene::CreateGameObject(const std::wstring name, eObjectTag tag)
 	bool bIsBase = std::is_base_of<GameObject, T>::value;
 	assert(bIsBase == true);	// GameObject를 상속받은 클래스만 생성할 수 있다.
 	T* newObject = new T();
+	newObject->Initialize();
 	newObject->SetName(name);
 	newObject->SetTag(tag);
+
 	mGameObjects.push_back(newObject);
+
 	return newObject;
 }
 

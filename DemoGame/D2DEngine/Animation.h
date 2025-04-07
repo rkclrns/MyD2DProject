@@ -22,6 +22,8 @@ public:
 	Animation();
 	~Animation();
 
+	void Initialize() override;
+	void Destroy() override;
 	void Update() override;
 	void Render() override;
 

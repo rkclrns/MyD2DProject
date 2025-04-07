@@ -53,6 +53,7 @@ void WinApp::Run()
 
 void WinApp::UnInitialize()
 {
+	SceneManager::UnInitialize();
 	// d2d 삭제
 	D2DRenderer::GetInstance()->Uninitialize();
 	// COM 사용 끝 (사용은 d2d에서 함)
@@ -66,9 +67,9 @@ void WinApp::Render()
 
 void WinApp::Update()
 {
-	SceneManager::Update();
 	TimeSystem::Update();
 	InputSystem::Update();
+	SceneManager::Update();
 }
 
 void WinApp::WindowInitialize()

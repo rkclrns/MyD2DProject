@@ -18,13 +18,11 @@ public:
 	Collider();
 	~Collider();
 
-	virtual void Initialize();
-	virtual void PreUpdate();
-	virtual void Update();
-	virtual void PostUpdate();
-	virtual void PreRender();
-	virtual void Render();
-	virtual void PostRender();
+	virtual void Initialize() override;
+	virtual void PreUpdate() override;
+	virtual void Update() override;
+	virtual void Render() override;
+	virtual void Destroy() override;
 
 	bool IsColliding() const { return bIsCollid; }
 	void SetColliding(bool val) { bIsCollid = val; }

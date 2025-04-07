@@ -5,10 +5,7 @@
 
 GameObject::GameObject()
 {
-	transform = AddComponent<Transform>();
-	boxCollider = AddComponent<BoxCollider>();
-	sprite = AddComponent<SpriteRenderer>();
-	boxCollider->transform = this->transform;
+
 }
 
 GameObject::~GameObject()
@@ -16,56 +13,71 @@ GameObject::~GameObject()
 
 }
 
+void GameObject::Initialize()
+{
+	transform = AddComponent<Transform>();
+	boxCollider = AddComponent<BoxCollider>();
+	boxCollider->transform = this->transform;
+
+	int size = mComponents.size();
+
+	for (int i = 0; i < size; i++)
+	{
+		if (mComponents[i]->GetComponentState() == eComponentState::ACTIVE)
+		{
+			mComponents[i]->Initialize();
+		}
+	}
+}
+
 void GameObject::PreUpdate()
 {
-	for (auto* e : mComponents)
+	int size = mComponents.size();
+
+	for (int i = 0; i < size; i++)
 	{
-		if(e->GetComponentState() == eComponentState::ACTIVE)
-			e->PreUpdate();
+		if (mComponents[i]->GetComponentState() == eComponentState::ACTIVE)
+		{
+			mComponents[i]->PreUpdate();
+		}
 	}
 }
 
 void GameObject::Update()
 {
-	for (auto* e : mComponents)
-	{
-		if (e->GetComponentState() == eComponentState::ACTIVE)
-			e->Update();
-	}
-}
+	int size = mComponents.size();
 
-void GameObject::PostUpdate()
-{
-	for (auto* e : mComponents)
+	for (int i = 0; i < size; i++)
 	{
-		if (e->GetComponentState() == eComponentState::ACTIVE)
-			e->PostUpdate();
-	}
-}
-
-void GameObject::PreRender()
-{
-	for (auto* e : mComponents)
-	{
-		if (e->GetComponentState() == eComponentState::ACTIVE)
-			e->PreRender();
+		if (mComponents[i]->GetComponentState() == eComponentState::ACTIVE)
+		{
+			mComponents[i]->Update();
+		}
 	}
 }
 
 void GameObject::Render()
 {
-	for (auto* e : mComponents)
+	int size = mComponents.size();
+
+	for (int i = 0; i < size; i++)
 	{
-		if (e->GetComponentState() == eComponentState::ACTIVE)
-			e->Render();
+		if (mComponents[i]->GetComponentState() == eComponentState::ACTIVE)
+		{
+			mComponents[i]->Render();
+		}
 	}
 }
 
-void GameObject::PostRender()
+void GameObject::Destroy()
 {
-	for (auto* e : mComponents)
+	int size = mComponents.size();
+
+	for (int i = 0; i < size; i++)
 	{
-		if (e->GetComponentState() == eComponentState::ACTIVE)
-			e->PostRender();
+		if (mComponents[i]->GetComponentState() == eComponentState::ACTIVE)
+		{
+			mComponents[i]->Destroy();
+		}
 	}
 }

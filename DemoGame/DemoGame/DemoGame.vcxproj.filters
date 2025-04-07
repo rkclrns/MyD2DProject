@@ -5,6 +5,18 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="client\bullet">
+      <UniqueIdentifier>{beded21a-a2ad-45c1-8c86-9ee6160ad416}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="client\player">
+      <UniqueIdentifier>{ce054a5d-0310-4cf4-b42d-9ab40a31754d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="client\enemy">
+      <UniqueIdentifier>{15ebcb06-b79f-4b20-afa0-00878094fa22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="client\scene">
+      <UniqueIdentifier>{b0cae891-6525-473f-9e38-abcbaaed6827}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DemoGame.h">
@@ -16,11 +28,18 @@
     <ClInclude Include="Game.h">
       <Filter>client</Filter>
     </ClInclude>
-    <ClInclude Include="PlayScene.h">
-      <Filter>client</Filter>
+    <ClInclude Include="Bullet.h">
+      <Filter>client\bullet</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="Bullet.h" />
+    <ClInclude Include="Player.h">
+      <Filter>client\player</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>client\enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayScene.h">
+      <Filter>client\scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -29,14 +48,17 @@
     <ClCompile Include="DemoGame.cpp">
       <Filter>client</Filter>
     </ClCompile>
-    <ClCompile Include="PlayScene.cpp">
-      <Filter>client</Filter>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>client\bullet</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>client</Filter>
+      <Filter>client\player</Filter>
     </ClCompile>
-    <ClCompile Include="Bullet.cpp">
-      <Filter>client</Filter>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>client\enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayScene.cpp">
+      <Filter>client\scene</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

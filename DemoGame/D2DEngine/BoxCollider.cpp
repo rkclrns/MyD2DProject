@@ -26,23 +26,17 @@ void BoxCollider::Update()
 	mPosition = transform->GetWorldPosition();
 }
 
-void BoxCollider::PostUpdate()
-{
-}
-
-void BoxCollider::PreRender()
-{
-}
-
 void BoxCollider::Render()
 {
+	// 디버그일때만 그리기!!!!
+
 	if(!bIsCollid)
 		D2DRenderer::GetInstance()->DrawRect(GetColliderRect(), D2D1::ColorF(D2D1::ColorF::Green), false);
 	else
 		D2DRenderer::GetInstance()->DrawRect(GetColliderRect(), D2D1::ColorF(D2D1::ColorF::Red), false);
 }
 
-void BoxCollider::PostRender()
+void BoxCollider::Destroy()
 {
 }
 

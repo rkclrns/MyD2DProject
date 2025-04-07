@@ -25,11 +25,9 @@ public:
 	static void Initialize();
 	static void PreUpdate();
 	static void Update();
-	static void PostUpdate();
-	static void PreRender();
 	static void Render();
-	static void PostRender();
 	static void Clear();
+	static void UnInitialize();
 };
 
 template <typename T>

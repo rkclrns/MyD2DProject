@@ -14,85 +14,99 @@ Scene::~Scene()
 
 void Scene::Initialize()
 {
+	int size = mGameObjects.size();
 
+	for (int i = 0; i < size; i++)
+	{
+		if (!mGameObjects[i])
+			continue;
+
+		if (mGameObjects[i]->GetState() == eObjectState::ACTIVE)
+		{
+			mGameObjects[i]->Initialize();
+		}
+	}
 }
 
 void Scene::PreUpdate()
 {
-	for (auto* e : mGameObjects)
+	int size = mGameObjects.size();
+
+	for (int i = 0; i < size; i++)
 	{
-		if (e->GetState() == eObjectState::ACTIVE)
+		if (!mGameObjects[i])
+			continue;
+
+		if (mGameObjects[i]->GetState() == eObjectState::ACTIVE)
 		{
-			e->PreUpdate();
+			mGameObjects[i]->PreUpdate();
 		}
 	}
 }
 
 void Scene::Update()
 {
-	for (auto* e : mGameObjects)
-	{
-		if (e->GetState() == eObjectState::ACTIVE)
-		{
-			e->Update();
-		}
-	}
-}
+	int size = mGameObjects.size();
+	
+	Release();
 
-void Scene::PostUpdate()
-{
-	for (auto* e : mGameObjects)
+	for (int i = 0; i < size; i++)
 	{
-		if (e->GetState() == eObjectState::ACTIVE)
-		{
-			e->PostUpdate();
-		}
-	}
+		if (!mGameObjects[i])
+			continue;
 
-	// 죽은 오브젝트 제거
-	mGameObjects.erase(
-		std::remove_if(mGameObjects.begin(), mGameObjects.end(),
-			[](GameObject* obj)
-			{
-				if (obj->IsDead())
-				{
-					delete obj;  // 메모리 해제
-					return true; // 리스트에서 제거
-				}
-				return false;
-			}),
-		mGameObjects.end());
-}
-
-void Scene::PreRender()
-{
-	for (auto* e : mGameObjects)
-	{
-		if (e->GetState() == eObjectState::ACTIVE)
+		if (mGameObjects[i]->GetState() == eObjectState::ACTIVE)
 		{
-			e->PreRender();
+			mGameObjects[i]->Update();
 		}
 	}
 }
 
 void Scene::Render()
 {
-	for (auto* e : mGameObjects)
+	int size = mGameObjects.size();
+
+	for (int i = 0; i < size; i++)
 	{
-		if (e->GetState() == eObjectState::ACTIVE)
+		if (!mGameObjects[i])
+			continue;
+
+		if (mGameObjects[i]->GetState() == eObjectState::ACTIVE)
 		{
-			e->Render();
+			mGameObjects[i]->Render();
 		}
 	}
 }
 
-void Scene::PostRender()
+void Scene::Release()
 {
-	for (auto* e : mGameObjects)
+	// 죽은 오브젝트 제거
+	int size = mGameObjects.size();
+
+	for (int i = 0; i < size; i++)
 	{
-		if (e->GetState() == eObjectState::ACTIVE)
+		if (!mGameObjects[i])
+			continue;
+
+		if (mGameObjects[i] && mGameObjects[i]->IsDead()) {
+			delete mGameObjects[i];
+			mGameObjects[i] = nullptr;
+		}
+	}
+}
+
+void Scene::UnInitialize()
+{
+	int size = mGameObjects.size();
+
+	for (int i = 0; i < size; i++)
+	{
+		if (!mGameObjects[i])
+			continue;
+
+		if (mGameObjects[i]->GetState() == eObjectState::ACTIVE)
 		{
-			e->PostRender();
+			mGameObjects[i]->Destroy();
 		}
 	}
 }

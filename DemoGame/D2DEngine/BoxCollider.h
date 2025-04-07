@@ -8,13 +8,11 @@ public:
 	BoxCollider();
 	~BoxCollider();
 
-	void Initialize();
-	void PreUpdate();
-	void Update();
-	void PostUpdate();
-	void PreRender();
-	void Render();
-	void PostRender();
+	void Initialize() override;
+	void PreUpdate() override;
+	void Update() override;
+	void Render() override;
+	void Destroy() override;
 
 	bool isCollide(Collider* other);
 	bool isCollide(const Vector2& point);

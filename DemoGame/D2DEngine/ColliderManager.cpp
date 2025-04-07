@@ -24,9 +24,9 @@ void ColliderManager::Update()
 
     for (auto obj : gameObjects)
     {
-        //나중에 죽었을때 검사하기
-        //if (obj == nullptr || obj->IsDead())
-        //  continue;
+        // 죽었을때 검사하기
+        if (obj == nullptr || obj->IsDead())
+          continue;
 
         BoxCollider* col = obj->boxCollider;
         if (col && col->GetComponentState() == eComponentState::ACTIVE)
@@ -78,9 +78,9 @@ void ColliderManager::Render()
 
 bool ColliderManager::IsCollision(eObjectTag a, eObjectTag b)
 {
-	if ((a == eObjectTag::PLAYER && b == eObjectTag::ENEMY) ||
-		(a == eObjectTag::ENEMY && b == eObjectTag::PLAYER))
-		return true;
+	//if ((a == eObjectTag::PLAYER && b == eObjectTag::ENEMY) ||
+	//	(a == eObjectTag::ENEMY && b == eObjectTag::PLAYER))
+	//	return true;
 
 	if ((a == eObjectTag::BULLET && b == eObjectTag::ENEMY) ||
 		(a == eObjectTag::ENEMY && b == eObjectTag::BULLET))

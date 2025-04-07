@@ -16,12 +16,11 @@ public:
 	Vector2 scale = Vector2(1, 1);
 	Vector2 pivot = { 0, 0 };
 
-	void PreUpdate();
-	void Update();
-	void PostUpdate();
-	void PreRender();
-	void Render();
-	void PostRender();
+	void Initialize() override;
+	void PreUpdate() override;
+	void Update() override;
+	void Render() override;
+	void Destroy() override;
 
 	void SetParent(Transform* parent);
 	void SetPosition(const Vector2& position);

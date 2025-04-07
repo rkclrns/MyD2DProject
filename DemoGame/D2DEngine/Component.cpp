@@ -4,7 +4,7 @@
 Component::Component(eComponentType type)
 	: mType(type)
 {
-	mState = eComponentState::ACTIVE;
+	
 }
 
 Component::~Component()
@@ -14,5 +14,5 @@ Component::~Component()
 
 void Component::Initialize()
 {
-
+	mState = eComponentState::ACTIVE;
 }

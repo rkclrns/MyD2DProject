@@ -23,14 +23,6 @@ void LineRenderer::Update()
 {
 }
 
-void LineRenderer::PostUpdate()
-{
-}
-
-void LineRenderer::PreRender()
-{
-}
-
 void LineRenderer::Render()
 {
 	D2D1_POINT_2F start = { mStartPoint.x, mStartPoint.y };
@@ -39,6 +31,6 @@ void LineRenderer::Render()
 	D2DRenderer::GetInstance()->DrawLine(start, end, mColor, 1.0f, mWidth);
 }
 
-void LineRenderer::PostRender()
+void LineRenderer::Destroy()
 {
 }

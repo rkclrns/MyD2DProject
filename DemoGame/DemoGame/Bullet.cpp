@@ -7,13 +7,21 @@
 Bullet::Bullet()
 	: GameObject()
 {
-	sprite->SetSprite(ResourceManager::GetInstance()->
-		Load<Sprite>(L"Coromon", L"../Resource/bullet.png"));
-	boxCollider->SetSize(50, 50);
+
 }
 
 Bullet::~Bullet()
 {
+}
+
+void Bullet::Initialize()
+{
+	__super::Initialize();
+
+	sprite = AddComponent<SpriteRenderer>();
+	sprite->SetSprite(ResourceManager::GetInstance()->
+		Load<Sprite>(L"Bullet", L"../Resource/bullet.png"));
+	boxCollider->SetSize(50, 50);
 }
 
 void Bullet::PreUpdate()
@@ -25,26 +33,16 @@ void Bullet::Update()
 {
 	__super::Update();
 
-	// 이동
-	transform->position += mDirection * mSpeed * TimeSystem::GetDeltaTime();
-
-	// 수명 카운트
-	mCurrentLife += TimeSystem::GetDeltaTime();
-	
-	if (mCurrentLife >= mLifeTime)
+	if (boxCollider->IsColliding())
 	{
-		this->SetDead(true); // 수명 끝나면 제거
+		SetDead(true);
 	}
-}
+	else
+	{
+		// 시간 지나면 없어지게
+	}
 
-void Bullet::PostUpdate()
-{
-	__super::PostUpdate();
-}
-
-void Bullet::PreRender()
-{
-	__super::PreRender();
+	transform->position += mDirection * mSpeed * TimeSystem::GetDeltaTime();
 }
 
 void Bullet::Render()
@@ -52,15 +50,14 @@ void Bullet::Render()
 	__super::Render();
 }
 
-void Bullet::PostRender()
+void Bullet::Destroy()
 {
-	__super::PostRender();
 }
 
 void Bullet::SetDirection(const Vector2& dir)
 {
 	mDirection = dir;
-	mDirection.Normalize(); // 단위 벡터로 보장
+	mDirection = mDirection.Normalize(); // 단위 벡터로 보장
 }
 
 void Bullet::SetSpeed(float speed)

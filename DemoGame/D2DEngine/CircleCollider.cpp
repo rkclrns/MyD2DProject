@@ -21,19 +21,11 @@ void CircleCollider::Update()
 {
 }
 
-void CircleCollider::PostUpdate()
-{
-}
-
-void CircleCollider::PreRender()
-{
-}
-
 void CircleCollider::Render()
 {
 }
 
-void CircleCollider::PostRender()
+void CircleCollider::Destroy()
 {
 }
 

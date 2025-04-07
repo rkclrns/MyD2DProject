@@ -61,22 +61,6 @@ void SceneManager::Update()
 	mActiveScene->Update();
 }
 
-void SceneManager::PostUpdate()
-{
-	if (!mActiveScene)
-		return;
-
-	mActiveScene->PostUpdate();
-}
-
-void SceneManager::PreRender()
-{
-	if (!mActiveScene)
-		return;
-
-	mActiveScene->PreRender();
-}
-
 void SceneManager::Render()
 {
 	if (!mActiveScene)
@@ -85,15 +69,17 @@ void SceneManager::Render()
 	mActiveScene->Render();
 }
 
-void SceneManager::PostRender()
+void SceneManager::Clear()
+{
+
+}
+
+void SceneManager::UnInitialize()
 {
 	if (!mActiveScene)
 		return;
 
-	mActiveScene->PostRender();
-}
+	mActiveScene->UnInitialize();
 
-void SceneManager::Clear()
-{
-
+	mScenes.clear();
 }

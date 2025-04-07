@@ -2,6 +2,7 @@
 #include "..\D2DEngine\GameObject.h"
 
 class LineRenderer;
+class SpriteRenderer;
 class Player :
     public GameObject
 {
@@ -9,19 +10,20 @@ public:
 	Player();
 	virtual ~Player();
 
+	void Initialize();
 	void PreUpdate();
 	void Update();
-	void PostUpdate();
-	void PreRender();
 	void Render();
-	void PostRender();
+	void Destroy();
 
 public:
-	void FireBullet();
+	void FireBullet(Vector2 dir);
 
 private:
-	LineRenderer* lineRenderer = nullptr;
-	float aimAngle = 0.f; // 조준 각도 (라디안)
-	float aimLength = 30.f; // 라인 길이
+	SpriteRenderer* m_pSprite = nullptr;
+	LineRenderer* m_pLineRenderer = nullptr;
+	float mAngleDeg = 0.0f; // 도(degree) 단위 = 0.f; // 조준 각도 (라디안)
+	float mRotationSpeed = 100.f; // 돌아가는 속도
+	float mRadius = 300.f;	// 반지름
 };
 

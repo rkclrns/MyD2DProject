@@ -4,11 +4,16 @@
 Transform::Transform()
     : Component(eComponentType::Transform)
 {
-    UpdateWorldMatrix();
+    
 }
 
 Transform::~Transform()
 {
+}
+
+void Transform::Initialize()
+{
+    UpdateWorldMatrix();
 }
 
 void Transform::PreUpdate()
@@ -20,19 +25,11 @@ void Transform::Update()
     UpdateWorldMatrix();
 }
 
-void Transform::PostUpdate()
-{
-}
-
-void Transform::PreRender()
-{
-}
-
 void Transform::Render()
 {
 }
 
-void Transform::PostRender()
+void Transform::Destroy()
 {
 }
 

@@ -4,77 +4,41 @@
 #include "..\D2DEngine\BoxCollider.h"
 #include "..\D2DEngine\LineRenderer.h"
 #include "Player.h"
+#include "Enemy.h"
 
 void PlayScene::Initialize()
 {
 	bg = CreateGameObject<GameObject>(L"Background", eObjectTag::UI);
-	bg->sprite->SetSprite(ResourceManager::GetInstance()->
+	bg->AddComponent<SpriteRenderer>()->SetSprite(ResourceManager::GetInstance()->
 		Load<Sprite>(L"Background", L"../Resource/BG.jpg"));
-	bg->transform->SetPivot(bg->sprite->GetSprite()->GetCenter());
+	bg->transform->SetPivot(bg->GetComponent<SpriteRenderer>()->GetSprite()->GetCenter());
 	bg->boxCollider->SetComponentState(eComponentState::PASSIVE);
 
-	coromon = CreateGameObject<Player>(L"Coromon", eObjectTag::PLAYER);
+	bg2 = CreateGameObject<GameObject>(L"Background", eObjectTag::UI);
+	bg2->AddComponent<SpriteRenderer>()->SetSprite(ResourceManager::GetInstance()->
+		Load<Sprite>(L"Background_2", L"../Resource/BG_2.png"));
+	bg2->transform->SetPivot(bg2->GetComponent<SpriteRenderer>()->GetSprite()->GetCenter());
+	bg2->boxCollider->SetComponentState(eComponentState::PASSIVE);
 
 	ResourceManager::GetInstance()->
 		Load<Sprite>(L"Kuramon", L"../Resource/kuramon.png");
 
-	map.resize(5);
+	coromon = CreateGameObject<Player>(L"Coromon", eObjectTag::PLAYER);
+	kuramon = CreateGameObject<Enemy>(L"Kuramon", eObjectTag::ENEMY);
 
-	for (size_t i = 0; i < 5; i++)
-	{
-		map[i].resize(18);
-	
-		for (size_t j = 0; j < 18; j++)
-		{
-			GameObject* kuramon = CreateGameObject<GameObject>(L"Enemy", eObjectTag::ENEMY);
-			
-			kuramon->transform->SetPosition(Vector2(j * 100.0f, i * 100.0f));
-			if (i % 2 != 0)
-				kuramon->transform->position.x += 100;
-
-			kuramon->sprite->SetSprite(ResourceManager::GetInstance()->
-				Find<Sprite>(L"Kuramon"));
-
-			kuramon->transform->SetPivot(Vector2(50, 50));
-			kuramon->boxCollider->SetSize(100, 100);
-			
-			map[i].push_back(kuramon);
-		}
-	
-		map.push_back(map[i]);
-	}
 }
 
 void PlayScene::PreUpdate()
 {
+	__super::PreUpdate();
 }
 
 void PlayScene::Update()
 {
 	__super::Update();
-
-	InputUpdate();
-}
-
-void PlayScene::PostUpdate()
-{
-}
-
-void PlayScene::PreRender()
-{
 }
 
 void PlayScene::Render()
 {
 	__super::Render();
-}
-
-void PlayScene::PostRender()
-{
-
-}
-
-void PlayScene::InputUpdate()
-{
-	
 }

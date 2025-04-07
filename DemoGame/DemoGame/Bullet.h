@@ -8,22 +8,18 @@ public:
 	Bullet();
 	virtual ~Bullet();
 
+	void Initialize();
 	void PreUpdate();
 	void Update();
-	void PostUpdate();
-	void PreRender();
 	void Render();
-	void PostRender();
+	void Destroy();
 
 	void SetDirection(const Vector2& dir);
 	void SetSpeed(float speed);
 
 private:
-
+	SpriteRenderer* sprite = nullptr;
 	Vector2 mDirection{};
-	float mSpeed = 500.0f; // 기본 속도
-	float mLifeTime = 3.0f; // 수명 제한 (초)
-	float mCurrentLife = 0.0f;
-
+	float mSpeed = 50000.0f; // 기본 속도
 };
 
