@@ -224,6 +224,8 @@ void D2DRenderer::DrawTextW(const wchar_t* text, IDWriteTextFormat*& fontFormat,
 
 void D2DRenderer::DrawLine(const D2D1_POINT_2F startPoint, const D2D1_POINT_2F endPoint, const D2D1_COLOR_F& color, float alpha, float lineWidth)
 {
+	m_pRenderTarget->SetTransform(D2D1::Matrix3x2F::Identity());
+
 	m_pBrush->SetColor(color);
 	m_pBrush->SetOpacity(alpha);
 

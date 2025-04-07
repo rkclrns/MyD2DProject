@@ -47,6 +47,9 @@ public:
 	void SetState(eObjectState eState) { mState = eState; }
 	eObjectState GetState() { return mState; }
 
+	void SetDead(bool isDead = true) { bIsDead = isDead; }
+	bool IsDead() const { return bIsDead; }
+
 	template <typename T>
 	T* GetComponent();
 
@@ -59,6 +62,7 @@ private:
 	eObjectTag mTag;
 	std::vector<Component*> mComponents;
 	eObjectState mState = eObjectState::ACTIVE;
+	bool bIsDead = false;
 };
 
 

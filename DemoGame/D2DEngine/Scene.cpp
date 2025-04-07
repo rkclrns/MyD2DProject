@@ -48,6 +48,20 @@ void Scene::PostUpdate()
 			e->PostUpdate();
 		}
 	}
+
+	// 죽은 오브젝트 제거
+	mGameObjects.erase(
+		std::remove_if(mGameObjects.begin(), mGameObjects.end(),
+			[](GameObject* obj)
+			{
+				if (obj->IsDead())
+				{
+					delete obj;  // 메모리 해제
+					return true; // 리스트에서 제거
+				}
+				return false;
+			}),
+		mGameObjects.end());
 }
 
 void Scene::PreRender()

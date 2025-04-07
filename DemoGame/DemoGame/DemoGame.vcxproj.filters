@@ -19,6 +19,8 @@
     <ClInclude Include="PlayScene.h">
       <Filter>client</Filter>
     </ClInclude>
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Bullet.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -28,6 +30,12 @@
       <Filter>client</Filter>
     </ClCompile>
     <ClCompile Include="PlayScene.cpp">
+      <Filter>client</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>client</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
       <Filter>client</Filter>
     </ClCompile>
   </ItemGroup>

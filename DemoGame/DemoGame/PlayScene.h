@@ -1,6 +1,7 @@
 #pragma once
 #include "..\D2DEngine\Scene.h"
 
+class Player;
 class PlayScene :
     public Scene
 {
@@ -17,11 +18,9 @@ public:
 
 private:
 	GameObject* bg = nullptr;
-	GameObject* coromon = nullptr;
+	Player* coromon = nullptr;
 	GameObject* line = nullptr;
 
 	std::vector<std::vector<GameObject*>> map;
-
-	float moveSpeed = 1000.f;
 };
 
