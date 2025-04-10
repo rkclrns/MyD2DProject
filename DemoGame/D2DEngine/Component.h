@@ -8,6 +8,7 @@ enum class eComponentType
 	Collider,
 	LineRenderer,
 	SpriteRenderer,
+	TextRenderer,
 	Animator,
 	Camera,
 	End,

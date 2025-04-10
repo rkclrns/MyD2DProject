@@ -15,6 +15,7 @@ public:
 	DWRITE_FONT_WEIGHT GetWeight();
 	DWRITE_FONT_STYLE GetStyle();
 	DWRITE_FONT_STRETCH GetStreth();
+	IDWriteTextFormat* GetTextFormat();
 
 	void SetFontName(const std::wstring name);
 	void SetSize(const float size);
@@ -23,10 +24,10 @@ public:
 	void SetStreth(const DWRITE_FONT_STRETCH stretch);
 
 private:
-	IDWriteTextFormat* m_pTextFormat;
+	IDWriteTextFormat* m_pTextFormat = nullptr;
 
 	std::wstring mFontName;
-	float mSize = 10.f;
+	float mSize = 100.f;
 	DWRITE_FONT_WEIGHT mWeight = DWRITE_FONT_WEIGHT_NORMAL;
 	DWRITE_FONT_STYLE mStyle = DWRITE_FONT_STYLE_NORMAL;
 	DWRITE_FONT_STRETCH mStretch = DWRITE_FONT_STRETCH_NORMAL;

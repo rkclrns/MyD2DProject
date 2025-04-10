@@ -14,6 +14,8 @@ public:
 	virtual void Update();
 	virtual void Render();
 
+	static int GetWidth();
+	static int GetHeight();
 private:
 	HINSTANCE mHInstance;
 	HWND mHWnd;

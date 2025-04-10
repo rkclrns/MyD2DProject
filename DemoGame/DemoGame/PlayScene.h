@@ -3,6 +3,7 @@
 
 class Player;
 class Enemy;
+class TextRenderer;
 class PlayScene :
     public Scene
 {
@@ -16,6 +17,11 @@ private:
 	GameObject* bg = nullptr;
 	GameObject* bg2 = nullptr;
 	Player* coromon = nullptr;
-	Enemy* kuramon = nullptr;
+	GameObject* text = nullptr;
+	TextRenderer* textRenderer = nullptr;
+
+	float spawnTimer = 0.0f;
+	float spawnInterval = 2.0f;
+	int score = 0;
 };
 

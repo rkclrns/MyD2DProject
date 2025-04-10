@@ -17,7 +17,7 @@ public:
 	void Destroy();
 
 public:
-	void FireBullet(Vector2 dir);
+	void BulletShot(Vector2 dir);
 
 private:
 	SpriteRenderer* m_pSprite = nullptr;
@@ -26,4 +26,3 @@ private:
 	float mRotationSpeed = 100.f; // 돌아가는 속도
 	float mRadius = 300.f;	// 반지름
 };
-

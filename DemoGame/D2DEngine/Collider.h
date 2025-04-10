@@ -42,7 +42,7 @@ public:
 protected:
 	bool bIsCollid = false;
 	eColliderType mType;
-	Vector2 mPosition{};
-	Vector2 mOffset{};
+	Vector2 mPosition;
+	Vector2 mOffset;
 };
 

@@ -35,6 +35,12 @@ void Enemy::PreUpdate()
 void Enemy::Update()
 {
 	__super::Update();
+
+	if (boxCollider->IsColliding())
+	{
+		SetDead();
+		return;
+	}
 }
 
 void Enemy::Render()

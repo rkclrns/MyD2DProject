@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Collider.h"
+#include "GameObject.h"
 
 Collider::Collider()
 	: Component(eComponentType::Collider)
@@ -13,6 +14,8 @@ Collider::~Collider()
 
 void Collider::Initialize()
 {
+	mPosition = GetOwner()->transform->position;
+	mOffset = (0, 0);
 }
 
 void Collider::PreUpdate()

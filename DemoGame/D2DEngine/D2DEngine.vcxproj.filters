@@ -55,6 +55,15 @@
     <Filter Include="source\core\component\collider\CircleCollider">
       <UniqueIdentifier>{6d823c92-5bcc-44ff-8d5a-9091ff4f2795}</UniqueIdentifier>
     </Filter>
+    <Filter Include="source\core\component\renderer\line">
+      <UniqueIdentifier>{2d97595d-5574-490b-bd61-6d9b563f5b4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\core\component\renderer\sprite">
+      <UniqueIdentifier>{eaa7399c-7c02-4263-9243-8ee16505a356}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\core\component\renderer\text">
+      <UniqueIdentifier>{f8f5c61f-4176-44b4-a0b1-386d3bb181b1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Component.h">
@@ -114,9 +123,6 @@
     <ClInclude Include="CFont.h">
       <Filter>source\core\resource\font</Filter>
     </ClInclude>
-    <ClInclude Include="SpriteRenderer.h">
-      <Filter>source\core\component\renderer</Filter>
-    </ClInclude>
     <ClInclude Include="BoxCollider.h">
       <Filter>source\core\component\collider\BoxCollider</Filter>
     </ClInclude>
@@ -127,7 +133,13 @@
       <Filter>source\framework\manager</Filter>
     </ClInclude>
     <ClInclude Include="LineRenderer.h">
-      <Filter>source\core\component\renderer</Filter>
+      <Filter>source\core\component\renderer\line</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteRenderer.h">
+      <Filter>source\core\component\renderer\sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="TextRenderer.h">
+      <Filter>source\core\component\renderer\text</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -185,9 +197,6 @@
     <ClCompile Include="CFont.cpp">
       <Filter>source\core\resource\font</Filter>
     </ClCompile>
-    <ClCompile Include="SpriteRenderer.cpp">
-      <Filter>source\core\component\renderer</Filter>
-    </ClCompile>
     <ClCompile Include="BoxCollider.cpp">
       <Filter>source\core\component\collider\BoxCollider</Filter>
     </ClCompile>
@@ -198,7 +207,13 @@
       <Filter>source\framework\manager</Filter>
     </ClCompile>
     <ClCompile Include="LineRenderer.cpp">
-      <Filter>source\core\component\renderer</Filter>
+      <Filter>source\core\component\renderer\line</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteRenderer.cpp">
+      <Filter>source\core\component\renderer\sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="TextRenderer.cpp">
+      <Filter>source\core\component\renderer\text</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

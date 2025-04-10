@@ -77,10 +77,9 @@ void Player::Update()
 		m_pLineRenderer->SetEndPoint(endPos);
 	}
 
-
 	// 스페이스바로 불렛 발사
 	if (InputSystem::GetKeyDown(eKeyCode::SPACE))
-		FireBullet(endPos - startPos);
+		BulletShot(endPos - startPos);
 }
 
 void Player::Render()
@@ -92,7 +91,7 @@ void Player::Destroy()
 {
 }
 
-void Player::FireBullet(Vector2 dir)
+void Player::BulletShot(Vector2 dir)
 {
 	// 방향 벡터 (단위 벡터)
 	Vector2 direction = dir;

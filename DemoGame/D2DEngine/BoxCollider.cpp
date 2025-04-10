@@ -15,6 +15,7 @@ BoxCollider::~BoxCollider()
 
 void BoxCollider::Initialize()
 {
+	__super::Initialize();
 }
 
 void BoxCollider::PreUpdate()
@@ -29,11 +30,12 @@ void BoxCollider::Update()
 void BoxCollider::Render()
 {
 	// 디버그일때만 그리기!!!!
-
+#ifdef _DEBUG
 	if(!bIsCollid)
-		D2DRenderer::GetInstance()->DrawRect(GetColliderRect(), D2D1::ColorF(D2D1::ColorF::Green), false);
+		D2DRenderer::GetInstance()->DrawRect(GetColliderRect(), D2D1::ColorF(D2D1::ColorF::Blue), false);
 	else
 		D2DRenderer::GetInstance()->DrawRect(GetColliderRect(), D2D1::ColorF(D2D1::ColorF::Red), false);
+#endif
 }
 
 void BoxCollider::Destroy()

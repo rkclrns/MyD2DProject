@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "SpriteRenderer.h"
-#include "Sprite.h"
 #include "GameObject.h"
 
 SpriteRenderer::SpriteRenderer()

@@ -211,9 +211,20 @@ void D2DRenderer::DrawRect(const D2D1_MATRIX_3X2_F& matrix, const D2D1_VECTOR_2F
 	}
 }
 
-void D2DRenderer::DrawTextW(const wchar_t* text, IDWriteTextFormat*& fontFormat, const D2D1_RECT_F& drawRect, const D2D1_COLOR_F& color, float alpha)
+void D2DRenderer::DrawTextW(const wchar_t* text, IDWriteTextFormat* fontFormat, const D2D1_RECT_F& drawRect, const D2D1_COLOR_F& color, float alpha)
 {
 	m_pRenderTarget->SetTransform(D2D1::Matrix3x2F::Identity());
+	m_pBrush->SetColor(color);
+	m_pBrush->SetOpacity(alpha);
+
+	size_t bufferSize = wcslen(text);
+
+	m_pRenderTarget->DrawText(text, bufferSize, fontFormat, drawRect, m_pBrush);
+}
+
+void D2DRenderer::DrawTextW(const wchar_t* text, IDWriteTextFormat* fontFormat, const D2D1_RECT_F& drawRect, const D2D1_MATRIX_3X2_F& matrix, const D2D1_COLOR_F& color, float alpha)
+{
+	m_pRenderTarget->SetTransform(matrix);
 	m_pBrush->SetColor(color);
 	m_pBrush->SetOpacity(alpha);
 

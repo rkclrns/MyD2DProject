@@ -43,6 +43,11 @@ DWRITE_FONT_STRETCH CFont::GetStreth()
 	return mStretch;
 }
 
+IDWriteTextFormat* CFont::GetTextFormat()
+{
+	return m_pTextFormat;
+}
+
 void CFont::SetFontName(const std::wstring name)
 {
 	mFontName = name;

@@ -72,6 +72,16 @@ void WinApp::Update()
 	SceneManager::Update();
 }
 
+int WinApp::GetWidth()
+{
+	return SCREEN_WIDTH;
+}
+
+int WinApp::GetHeight()
+{
+	return SCREEN_HEIGHT;
+}
+
 void WinApp::WindowInitialize()
 {
 	const TCHAR* appName = TEXT("가글가글");

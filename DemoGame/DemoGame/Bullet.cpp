@@ -33,13 +33,21 @@ void Bullet::Update()
 {
 	__super::Update();
 
+	// 생존 시간 누적
+	mTimer += TimeSystem::GetDeltaTime();
+
+	// 일정 시간 후 제거
+	if (mTimer >= mLifeTimer)
+	{
+		SetDead(true);
+		return;
+	}
+
+	// 충돌시 제거
 	if (boxCollider->IsColliding())
 	{
 		SetDead(true);
-	}
-	else
-	{
-		// 시간 지나면 없어지게
+		return;
 	}
 
 	transform->position += mDirection * mSpeed * TimeSystem::GetDeltaTime();
