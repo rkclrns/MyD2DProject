@@ -9,14 +9,14 @@ enum class eObjectState
 	PASSIVE,
 };
 
-enum class eObjectTag
+enum class eObjectTag : int
 {
-	NONE,
-	PLAYER,
-	BULLET,
-	ENEMY,
-	UI,
-	SOUND,
+	NONE	= 0,		//		0000
+	PLAYER	= 1 << 0,	//		0001
+	BULLET	= 1 << 1,	//		0010
+	ENEMY	= 1 << 2,	//		0100
+	UI		= 1 << 3,	//		1000
+	SOUND	= 1 << 4,	//	 1	0000
 };
 
 class SpriteRenderer;

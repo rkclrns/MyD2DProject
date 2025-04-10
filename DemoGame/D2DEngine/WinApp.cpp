@@ -21,6 +21,7 @@ void WinApp::Initialize(HINSTANCE hInstance)
 	WindowInitialize();
 	D2DRenderer::GetInstance()->Initialize(mHWnd);
 
+	ColliderManager::Initialize();
 	SceneManager::Initialize();
 	TimeSystem::Initialize();
 	InputSystem::Initialize();

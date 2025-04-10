@@ -1,4 +1,4 @@
-#include "ColliderManager.h"
+#include "pch.h"
 #include "SceneManager.h"
 #include "BoxCollider.h"
 #include "Component.h"
@@ -6,8 +6,11 @@
 
 void ColliderManager::Initialize()
 {
-
+    mColliderCheck.resize(5, 0);
+    CollisionCheck(eObjectTag::BULLET, eObjectTag::ENEMY);
 }
+
+std::vector<int> ColliderManager::mColliderCheck;
 
 void ColliderManager::PreUpdate()
 {
@@ -78,13 +81,43 @@ void ColliderManager::Render()
 
 bool ColliderManager::IsCollision(eObjectTag a, eObjectTag b)
 {
-	//if ((a == eObjectTag::PLAYER && b == eObjectTag::ENEMY) ||
-	//	(a == eObjectTag::ENEMY && b == eObjectTag::PLAYER))
-	//	return true;
+    int row = static_cast<int>(a);
+    int col = static_cast<int>(b);
 
-	if ((a == eObjectTag::BULLET && b == eObjectTag::ENEMY) ||
-		(a == eObjectTag::ENEMY && b == eObjectTag::BULLET))
-		return true;
+    if (a > b)
+    {
+        row = static_cast<int>(b);
+        col = static_cast<int>(a);
+    }
 
-	return false;
+    if (mColliderCheck[row] & (1 << col))
+    {
+        return true;
+    }
+    else
+        return false;
+}
+
+void ColliderManager::CollisionCheck(eObjectTag a, eObjectTag b)
+{
+    int row = static_cast<int>(a);
+    int col = static_cast<int>(b);
+
+    if (a > b)
+    {
+        row = static_cast<int>(b);
+        col = static_cast<int>(a);
+    }
+
+    // 1로 채워져있나?
+    if (mColliderCheck[row] & (1 << col))
+    {
+        // 빼주기
+        mColliderCheck[row] &= ~(1 << col);
+    }
+    else
+    {
+        // 넣어주기
+        mColliderCheck[row] |= (1 << col);
+    }
 }
